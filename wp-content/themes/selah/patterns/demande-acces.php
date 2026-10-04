@@ -21,7 +21,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"align":"center","textColor":"discret"} -->
-	<p class="has-text-align-center has-discret-color has-text-color">Laisse-nous tes coordonnées : l’équipe Selah te recontacte avec un code pour entrer dans le showroom.</p>
+	<p class="has-text-align-center has-discret-color has-text-color">Laisse-nous tes coordonnées : l’équipe Selah te recontacte avec un code pour entrer dans le showroom.</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:shortcode -->
@@ -29,7 +29,7 @@
 	<!-- /wp:shortcode -->
 
 	<!-- wp:paragraph {"align":"center","textColor":"discret","fontSize":"secondaire"} -->
-	<p class="has-text-align-center has-discret-color has-text-color has-secondaire-font-size">Tu as déjà un code ? <a href="#selah-app">Entre dans Selah</a>.</p>
+	<p class="has-text-align-center has-discret-color has-text-color has-secondaire-font-size">Tu as déjà un code ? <a href="#selah-app">Entre dans Selah</a>.</p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

@@ -25,7 +25,7 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"style":{"color":{"text":"#ffffffbf"}},"fontSize":"sous-titre"} -->
-			<p class="has-text-color has-sous-titre-font-size" style="color:#ffffffbf">Atelier, marque ou styliste indépendant : sur Selah, chacun voit vos créations portées par son propre personnage, puis les partage avec ses amis.</p>
+			<p class="has-text-color has-sous-titre-font-size" style="color:#ffffffbf">Atelier, marque ou styliste indépendant : sur Selah, chacun voit vos créations portées par son propre personnage, puis les partage avec ses amis.</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
@@ -45,7 +45,7 @@
 		<!-- wp:column {"verticalAlignment":"center"} -->
 		<div class="wp-block-column is-vertically-aligned-center">
 			<!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center"} -->
-			<figure class="wp-block-image aligncenter size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portant.svg' ) ); ?>" alt="Un portant d’atelier : chemise, robe aux bandes kanvô, boubou et pantalon."/></figure>
+			<figure class="wp-block-image aligncenter size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portant.svg' ) ); ?>" alt="Un portant d’atelier : chemise, robe aux bandes kanvô, boubou et pantalon."/></figure>
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->

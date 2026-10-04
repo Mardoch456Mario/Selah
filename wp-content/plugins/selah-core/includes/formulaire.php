@@ -60,22 +60,66 @@ function selah_core_horodatage_valide( $jeton ) {
 }
 
 /**
+ * Textes du formulaire, au tutoiement (par défaut) ou au vouvoiement.
+ *
+ * @param string $registre « tu » ou « vous ».
+ * @return array<string, string>
+ */
+function selah_core_textes( $registre ) {
+	if ( 'vous' === $registre ) {
+		return array(
+			'merci_titre'      => __( 'Merci, votre demande est bien arrivée.', 'selah-core' ),
+			'merci_texte'      => __( 'L’équipe Selah vous recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ),
+			'alerte'           => __( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ),
+			'legende'          => __( 'Vous êtes…', 'selah-core' ),
+			'err_nom'          => __( 'Indiquez votre nom.', 'selah-core' ),
+			'err_email'        => __( 'Indiquez une adresse e-mail valide.', 'selah-core' ),
+			'err_profil'       => __( 'Choisissez votre profil.', 'selah-core' ),
+			'err_marque'       => __( 'Indiquez le nom de votre marque ou de votre atelier.', 'selah-core' ),
+			'err_consentement' => __( 'Cochez la case pour accepter que nous traitions votre demande.', 'selah-core' ),
+			'err_envoi'        => __( 'Trop de demandes envoyées depuis votre connexion. Réessayez dans une heure.', 'selah-core' ),
+		);
+	}
+	return array(
+		'merci_titre'      => __( 'Merci, ta demande est bien arrivée.', 'selah-core' ),
+		'merci_texte'      => __( 'L’équipe Selah te recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ),
+		'alerte'           => __( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ),
+		'legende'          => __( 'Tu es…', 'selah-core' ),
+		'err_nom'          => __( 'Indique ton nom.', 'selah-core' ),
+		'err_email'        => __( 'Indique une adresse e-mail valide.', 'selah-core' ),
+		'err_profil'       => __( 'Choisis ton profil.', 'selah-core' ),
+		'err_marque'       => __( 'Indique le nom de ta marque ou de ton atelier.', 'selah-core' ),
+		'err_consentement' => __( 'Coche la case pour accepter que nous traitions ta demande.', 'selah-core' ),
+		'err_envoi'        => __( 'Trop de demandes envoyées depuis ta connexion. Réessaie dans une heure.', 'selah-core' ),
+	);
+}
+
+/**
  * Affiche le formulaire.
  *
  * @param array|string $atts Attributs du code court.
  * @return string
  */
 function selah_core_formulaire( $atts ) {
-	$atts    = shortcode_atts( array( 'profil' => 'essayer' ), $atts, 'selah_demande_acces' );
-	$profils = selah_core_profils();
+	$atts     = shortcode_atts(
+		array(
+			'profil'   => 'essayer',
+			'registre' => 'tu',
+		),
+		$atts,
+		'selah_demande_acces'
+	);
+	$profils  = selah_core_profils();
+	$registre = 'vous' === $atts['registre'] ? 'vous' : 'tu';
+	$textes   = selah_core_textes( $registre );
 
 	wp_enqueue_style( 'selah-formulaire' );
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended -- simple affichage.
 	if ( isset( $_GET['selah_demande'] ) && 'merci' === $_GET['selah_demande'] ) {
 		return '<div class="selah-formulaire selah-formulaire--merci" role="status" tabindex="-1">'
-			. '<p class="selah-formulaire__titre">' . esc_html__( 'Merci, ta demande est bien arrivée.', 'selah-core' ) . '</p>'
-			. '<p>' . esc_html__( 'L’équipe Selah te recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ) . '</p>'
+			. '<p class="selah-formulaire__titre">' . esc_html( $textes['merci_titre'] ) . '</p>'
+			. '<p>' . esc_html( $textes['merci_texte'] ) . '</p>'
 			. '</div>';
 	}
 
@@ -110,10 +154,11 @@ function selah_core_formulaire( $atts ) {
 		<input type="hidden" name="action" value="selah_demande_acces" />
 		<input type="hidden" name="retour" value="<?php echo esc_attr( selah_core_url_courante() ); ?>" />
 		<input type="hidden" name="horodatage" value="<?php echo esc_attr( selah_core_horodatage() ); ?>" />
+		<input type="hidden" name="registre" value="<?php echo esc_attr( $registre ); ?>" />
 
 		<?php if ( $erreurs ) : ?>
 			<div class="selah-formulaire__alerte" role="alert">
-				<p><?php esc_html_e( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ); ?></p>
+				<p><?php echo esc_html( $textes['alerte'] ); ?></p>
 				<ul>
 					<?php foreach ( $erreurs as $champ => $message ) : ?>
 						<li><a href="#<?php echo esc_attr( $id . '-' . $champ ); ?>"><?php echo esc_html( $message ); ?></a></li>
@@ -123,7 +168,7 @@ function selah_core_formulaire( $atts ) {
 		<?php endif; ?>
 
 		<fieldset class="selah-formulaire__profils">
-			<legend><?php esc_html_e( 'Tu es…', 'selah-core' ); ?></legend>
+			<legend><?php echo esc_html( $textes['legende'] ); ?></legend>
 			<?php foreach ( $profils as $cle => $libelle ) : ?>
 				<label class="selah-formulaire__choix">
 					<input type="radio" name="profil" value="<?php echo esc_attr( $cle ); ?>" <?php checked( $profil, $cle ); ?> <?php echo 'essayer' === $cle ? 'id="' . esc_attr( $id . '-profil' ) . '"' : ''; ?> />
@@ -297,6 +342,7 @@ function selah_core_traiter_demande() {
 	}
 
 	$profils = selah_core_profils();
+	$textes  = selah_core_textes( isset( $_POST['registre'] ) && 'vous' === $_POST['registre'] ? 'vous' : 'tu' );
 	$donnees = array(
 		'nom'          => isset( $_POST['nom'] ) ? sanitize_text_field( wp_unslash( $_POST['nom'] ) ) : '',
 		'email'        => isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '',
@@ -315,25 +361,25 @@ function selah_core_traiter_demande() {
 
 	$erreurs = array();
 	if ( mb_strlen( $donnees['nom'] ) < 2 ) {
-		$erreurs['nom'] = __( 'Indique ton nom.', 'selah-core' );
+		$erreurs['nom'] = $textes['err_nom'];
 	}
 	if ( ! is_email( $donnees['email'] ) ) {
-		$erreurs['email'] = __( 'Indique une adresse e-mail valide.', 'selah-core' );
+		$erreurs['email'] = $textes['err_email'];
 	}
 	if ( ! isset( $profils[ $donnees['profil'] ] ) ) {
-		$erreurs['profil'] = __( 'Choisis ton profil.', 'selah-core' );
+		$erreurs['profil'] = $textes['err_profil'];
 	}
 	if ( 'createur' === $donnees['profil'] && '' === $donnees['marque'] ) {
-		$erreurs['marque'] = __( 'Indique le nom de ta marque ou de ton atelier.', 'selah-core' );
+		$erreurs['marque'] = $textes['err_marque'];
 	}
 	if ( ! $donnees['consentement'] ) {
-		$erreurs['consentement'] = __( 'Coche la case pour accepter que nous traitions ta demande.', 'selah-core' );
+		$erreurs['consentement'] = $textes['err_consentement'];
 	}
 
 	$cle_limite = 'selah_limite_' . selah_core_empreinte_ip();
 	$compteur   = (int) get_transient( $cle_limite );
 	if ( ! $erreurs && $compteur >= SELAH_CORE_LIMITE_HEURE ) {
-		$erreurs['envoi'] = __( 'Trop de demandes envoyées depuis ta connexion. Réessaie dans une heure.', 'selah-core' );
+		$erreurs['envoi'] = $textes['err_envoi'];
 	}
 
 	if ( $erreurs ) {

@@ -43,7 +43,7 @@
 		<!-- wp:column {"verticalAlignment":"center"} -->
 		<div class="wp-block-column is-vertically-aligned-center">
 			<!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center","className":"selah-cadre-encre"} -->
-			<figure class="wp-block-image aligncenter size-full selah-cadre-encre"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portant.svg' ) ); ?>" alt="Un portant d’atelier : chemise, robe aux bandes kanvô, boubou et pantalon."/></figure>
+			<figure class="wp-block-image aligncenter size-full selah-cadre-encre"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portant.svg' ) ); ?>" alt="Un portant d’atelier : chemise, robe aux bandes kanvô, boubou et pantalon."/></figure>
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->
@@ -93,7 +93,7 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"textColor":"discret","fontSize":"secondaire"} -->
-			<p class="has-discret-color has-text-color has-secondaire-font-size">Selah est pensé pour les créateurs de Cotonou : leurs tissus, leurs coupes, leur façon de faire la mode.</p>
+			<p class="has-discret-color has-text-color has-secondaire-font-size">Selah est pensé pour les créateurs de Cotonou : leurs tissus, leurs coupes, leur façon de faire la mode.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -173,7 +173,7 @@
 	<!-- /wp:paragraph -->
 
 	<!-- wp:shortcode -->
-[selah_demande_acces profil="createur"]
+[selah_demande_acces profil="createur" registre="vous"]
 	<!-- /wp:shortcode -->
 </div>
 <!-- /wp:group -->

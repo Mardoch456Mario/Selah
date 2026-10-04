@@ -64,7 +64,7 @@ function selah_installer_pages() {
 		$existante = get_page_by_path( $slug );
 		if ( $existante && 'trash' !== $existante->post_status ) {
 			$ids[ $slug ] = $existante->ID;
-			$journal[]    = sprintf( 'Page déjà présente : %s', $titre );
+			$journal[]    = sprintf( 'Page déjà présente : %s', $titre );
 			continue;
 		}
 
@@ -81,12 +81,12 @@ function selah_installer_pages() {
 		);
 
 		if ( is_wp_error( $nouvelle ) ) {
-			$journal[] = sprintf( 'Impossible de créer « %s » : %s', $titre, $nouvelle->get_error_message() );
+			$journal[] = sprintf( 'Impossible de créer « %s » : %s', $titre, $nouvelle->get_error_message() );
 			continue;
 		}
 
 		$ids[ $slug ] = $nouvelle;
-		$journal[]    = sprintf( 'Page créée : %s', $titre );
+		$journal[]    = sprintf( 'Page créée : %s', $titre );
 	}
 
 	// L'accueil est dessiné par le modèle « Page d'accueil » du thème ; le journal liste les articles.
@@ -127,8 +127,22 @@ function selah_installer_pages() {
 	foreach ( $exemples as $exemple ) {
 		if ( $exemple->post_date === $exemple->post_modified && (int) get_option( 'wp_page_for_privacy_policy' ) !== (int) $exemple->ID ) {
 			wp_delete_post( $exemple->ID, true );
-			$journal[] = sprintf( 'Contenu d’exemple supprimé : %s', $exemple->post_title );
+			$journal[] = sprintf( 'Contenu d’exemple supprimé : %s', $exemple->post_title );
 		}
+	}
+
+	// Catégorie par défaut : « Uncategorized » reste en anglais si la langue a été changée après l'installation.
+	$categorie = get_term( (int) get_option( 'default_category' ), 'category' );
+	if ( $categorie instanceof WP_Term && in_array( $categorie->name, array( 'Uncategorized', 'Non classé' ), true ) ) {
+		wp_update_term(
+			$categorie->term_id,
+			'category',
+			array(
+				'name' => 'Actualités',
+				'slug' => 'actualites',
+			)
+		);
+		$journal[] = 'Catégorie par défaut renommée « Actualités ».';
 	}
 
 	// Adresses lisibles (/createurs/ plutôt que /?page_id=12).

@@ -53,7 +53,7 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"textColor":"discret"} -->
-			<p class="has-discret-color has-text-color">Partage un essai en un geste. Tes amis te disent ce qu’ils en pensent : tu n’es plus seul·e devant le miroir.</p>
+			<p class="has-discret-color has-text-color">Partage un essai en un geste. Tes amis te disent ce qu’ils en pensent : tu n’es plus seul·e devant le miroir.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

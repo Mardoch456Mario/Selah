@@ -27,7 +27,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph -->
-	<p>Quand tu fais une demande d’accès, nous enregistrons ce que tu remplis dans le formulaire : ton nom, ton adresse e-mail, ton numéro de téléphone si tu le donnes, ton profil, le nom de ta marque le cas échéant et ton message.</p>
+	<p>Quand tu fais une demande d’accès, nous enregistrons ce que tu remplis dans le formulaire : ton nom, ton adresse e-mail, ton numéro de téléphone si tu le donnes, ton profil, le nom de ta marque le cas échéant et ton message.</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading -->
@@ -35,7 +35,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph -->
-	<p>Uniquement pour traiter ta demande : te recontacter, t’envoyer un code d’accès à la démonstration de Selah et, si tu es créateur ou créatrice, échanger sur tes pièces. Nous ne revendons pas tes informations.</p>
+	<p>Uniquement pour traiter ta demande : te recontacter, t’envoyer un code d’accès à la démonstration de Selah et, si tu es créateur ou créatrice, échanger sur tes pièces. Nous ne revendons pas tes informations.</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading -->
@@ -59,7 +59,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph -->
-	<p>Tu peux à tout moment demander à consulter, corriger ou supprimer tes informations : réponds simplement à l’e-mail que nous t’avons envoyé, ou écris-nous via le <a href="<?php echo esc_url( home_url( '/demande-acces/' ) ); ?>">formulaire de demande</a> en le précisant dans ton message.</p>
+	<p>Tu peux à tout moment demander à consulter, corriger ou supprimer tes informations : réponds simplement à l’e-mail que nous t’avons envoyé, ou écris-nous via le <a href="<?php echo esc_url( home_url( '/demande-acces/' ) ); ?>">formulaire de demande</a> en le précisant dans ton message.</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading -->

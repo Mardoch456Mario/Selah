@@ -99,7 +99,7 @@ function selah_core_champ_url_app() {
 	echo '<p class="description">';
 	printf(
 		/* translators: %s: lien réservé #selah-app */
-		esc_html__( 'Tous les liens « %s » du site pointent vers cette adresse. Laissez vide pour utiliser l’adresse par défaut.', 'selah-core' ),
+		esc_html__( 'Tous les liens « %s » du site pointent vers cette adresse. Laissez vide pour utiliser l’adresse par défaut.', 'selah-core' ),
 		'<code>#selah-app</code>'
 	);
 	echo '</p>';

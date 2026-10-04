@@ -23,7 +23,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"textColor":"discret","fontSize":"sous-titre"} -->
-	<p class="has-discret-color has-text-color has-sous-titre-font-size">Selah est un showroom de mode. Ton personnage essaie pour toi les pièces des créateurs de Cotonou ; tu regardes, tu demandes l’avis de tes amis, tu gardes ce qui te va.</p>
+	<p class="has-discret-color has-text-color has-sous-titre-font-size">Selah est un showroom de mode. Ton personnage essaie pour toi les pièces des créateurs de Cotonou ; tu regardes, tu demandes l’avis de tes amis, tu gardes ce qui te va.</p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -41,7 +41,7 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph -->
-			<p>Choisir un vêtement, c’est souvent hésiter : est-ce que ça m’ira ? Qu’en penseront mes proches ? Selah répond aux deux questions à la fois.</p>
+			<p>Choisir un vêtement, c’est souvent hésiter : est-ce que ça m’ira ? Qu’en penseront mes proches ? Selah répond aux deux questions à la fois.</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:paragraph -->
@@ -57,11 +57,11 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph -->
-			<p>Cotonou regorge d’ateliers, de stylistes et de marques au talent fou. Selah leur offre une vitrine où leurs pièces ne sont pas seulement regardées : elles sont essayées.</p>
+			<p>Cotonou regorge d’ateliers, de stylistes et de marques au talent fou. Selah leur offre une vitrine où leurs pièces ne sont pas seulement regardées : elles sont essayées.</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:paragraph -->
-			<p>Créateur ou créatrice ? <a href="<?php echo esc_url( home_url( '/createurs/' ) ); ?>">Découvrez comment rejoindre Selah</a>.</p>
+			<p>Créateur ou créatrice ? <a href="<?php echo esc_url( home_url( '/createurs/' ) ); ?>">Découvrez comment rejoindre Selah</a>.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -81,7 +81,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"style":{"color":{"text":"#ffffffbf"}},"fontSize":"sous-titre"} -->
-	<p class="has-text-color has-sous-titre-font-size" style="color:#ffffffbf">L’identité de Selah tient en deux couleurs, l’encre et le blanc, pour laisser parler les vêtements. Un seul accent : un fil safran, clin d’œil au kanvô, l’étoffe tissée du Bénin.</p>
+	<p class="has-text-color has-sous-titre-font-size" style="color:#ffffffbf">L’identité de Selah tient en deux couleurs, l’encre et le blanc, pour laisser parler les vêtements. Un seul accent : un fil safran, clin d’œil au kanvô, l’étoffe tissée du Bénin.</p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

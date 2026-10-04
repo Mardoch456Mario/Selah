@@ -18,7 +18,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"discret","fontSize":"sous-titre"} -->
-<p class="has-discret-color has-text-color has-sous-titre-font-size">Elle n’existe pas, ou plus. Essaie autre chose : tu trouveras sûrement ce qui te va.</p>
+<p class="has-discret-color has-text-color has-sous-titre-font-size">Elle n’existe pas, ou plus. Essaie autre chose : tu trouveras sûrement ce qui te va.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
