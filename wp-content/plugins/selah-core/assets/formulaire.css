@@ -1,0 +1,230 @@
+/* Formulaire de demande d'accès Selah. Reprend les couleurs du thème quand il est actif. */
+
+.selah-formulaire {
+	--sf-encre: var(--wp--preset--color--encre, #0b0b0c);
+	--sf-blanc: var(--wp--preset--color--blanc, #fff);
+	--sf-trait: var(--wp--preset--color--trait, #e4e4e2);
+	--sf-discret: var(--wp--preset--color--discret, #6b6b70);
+	--sf-safran: var(--wp--preset--color--safran, #c9922a);
+	--sf-erreur: var(--wp--preset--color--erreur, #b3261e);
+	--sf-succes: var(--wp--preset--color--succes, #1f7a4d);
+
+	display: grid;
+	gap: 1rem;
+	margin-block: 2rem;
+	padding: clamp(1.25rem, 1rem + 2vw, 2rem);
+	background: var(--sf-blanc);
+	border: 1px solid var(--sf-trait);
+	border-radius: 1.25rem;
+	color: var(--sf-encre);
+	text-align: left;
+}
+
+.selah-formulaire fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.selah-formulaire legend,
+.selah-formulaire__champ label {
+	display: block;
+	margin-bottom: 0.4rem;
+	font-weight: 600;
+	font-size: 0.875rem;
+}
+
+.selah-formulaire__aide {
+	font-weight: 400;
+	color: var(--sf-discret);
+}
+
+.selah-formulaire input[type="text"],
+.selah-formulaire input[type="email"],
+.selah-formulaire input[type="tel"],
+.selah-formulaire textarea {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 3rem;
+	padding: 0.7rem 1.25rem;
+	border: 1px solid var(--sf-trait);
+	border-radius: 999px;
+	background: var(--sf-blanc);
+	color: var(--sf-encre);
+	font: inherit;
+	font-size: 1rem;
+}
+
+.selah-formulaire textarea {
+	border-radius: 1.25rem;
+	resize: vertical;
+}
+
+.selah-formulaire input:focus,
+.selah-formulaire textarea:focus {
+	border-color: var(--sf-encre);
+	outline: none;
+}
+
+.selah-formulaire input:focus-visible,
+.selah-formulaire textarea:focus-visible {
+	outline: 2px solid var(--sf-encre);
+	outline-offset: 2px;
+}
+
+/* Profils : trois pilules à cocher. */
+.selah-formulaire__profils {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.selah-formulaire__profils legend {
+	width: 100%;
+}
+
+.selah-formulaire__choix {
+	position: relative;
+	cursor: pointer;
+}
+
+.selah-formulaire__choix input {
+	position: absolute;
+	opacity: 0;
+	inset: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.selah-formulaire__choix span {
+	display: inline-block;
+	padding: 0.55rem 1rem;
+	border: 1px solid var(--sf-trait);
+	border-radius: 999px;
+	font-size: 0.875rem;
+	font-weight: 500;
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.selah-formulaire__choix:hover span {
+	border-color: var(--sf-encre);
+}
+
+.selah-formulaire__choix input:checked + span {
+	background: var(--sf-encre);
+	border-color: var(--sf-encre);
+	color: var(--sf-blanc);
+}
+
+.selah-formulaire__choix input:focus-visible + span {
+	outline: 2px solid var(--sf-encre);
+	outline-offset: 2px;
+}
+
+/* Le champ « Marque » ne s'affiche que pour les créateurs (si le navigateur sait faire). */
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) .selah-formulaire__champ--marque:not(.a-une-erreur) {
+	display: none;
+}
+
+.selah-formulaire__consentement {
+	display: flex;
+	gap: 0.6rem;
+	align-items: flex-start;
+	font-size: 0.875rem;
+	color: var(--sf-discret);
+	cursor: pointer;
+}
+
+.selah-formulaire__consentement input {
+	flex: none;
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-top: 0.1rem;
+	accent-color: var(--sf-encre);
+}
+
+.selah-formulaire__consentement a {
+	color: var(--sf-encre);
+}
+
+.selah-formulaire__envoyer {
+	justify-self: stretch;
+	min-height: 3rem;
+	padding: 0.7rem 1.5rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--sf-encre);
+	color: var(--sf-blanc);
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.selah-formulaire__envoyer:hover,
+.selah-formulaire__envoyer:focus-visible {
+	background: rgb(11 11 12 / 0.85);
+}
+
+/* Champ piège pour les robots : hors écran, invisible des humains. */
+.selah-formulaire__piege {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Erreurs. */
+.selah-formulaire__alerte {
+	padding: 0.9rem 1.1rem;
+	border-left: 3px solid var(--sf-erreur);
+	border-radius: 0.5rem;
+	background: rgb(179 38 30 / 0.06);
+	font-size: 0.875rem;
+}
+
+.selah-formulaire__alerte p,
+.selah-formulaire__alerte ul {
+	margin: 0;
+}
+
+.selah-formulaire__alerte ul {
+	padding-left: 1.1rem;
+	margin-top: 0.4rem;
+}
+
+.selah-formulaire__alerte a {
+	color: var(--sf-erreur);
+}
+
+.selah-formulaire__erreur {
+	margin: 0 0 0.4rem;
+	color: var(--sf-erreur);
+	font-size: 0.875rem;
+}
+
+.selah-formulaire .a-une-erreur input,
+.selah-formulaire .a-une-erreur textarea {
+	border-color: var(--sf-erreur);
+}
+
+.selah-formulaire__consentement.a-une-erreur {
+	color: var(--sf-erreur);
+}
+
+/* Confirmation. */
+.selah-formulaire--merci {
+	border-color: var(--sf-succes);
+	text-align: center;
+}
+
+.selah-formulaire--merci p {
+	margin: 0;
+}
+
+.selah-formulaire__titre {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--sf-succes);
+}
