@@ -72,6 +72,7 @@ function selah_core_textes( $registre ) {
 			'merci_texte'      => __( 'L’équipe Selah vous recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ),
 			'alerte'           => __( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ),
 			'legende'          => __( 'Vous venez pour…', 'selah-core' ),
+			'message_indice'   => __( 'Dites-nous en deux mots ce qui vous amène.', 'selah-core' ),
 			'err_nom'          => __( 'Indiquez votre nom.', 'selah-core' ),
 			'err_email'        => __( 'Indiquez une adresse e-mail valide.', 'selah-core' ),
 			'err_profil'       => __( 'Choisissez votre profil.', 'selah-core' ),
@@ -85,6 +86,7 @@ function selah_core_textes( $registre ) {
 		'merci_texte'      => __( 'L’équipe Selah te recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ),
 		'alerte'           => __( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ),
 		'legende'          => __( 'Tu viens pour…', 'selah-core' ),
+		'message_indice'   => __( 'Dis-nous en deux mots ce qui t’amène.', 'selah-core' ),
 		'err_nom'          => __( 'Indique ton nom.', 'selah-core' ),
 		'err_email'        => __( 'Indique une adresse e-mail valide.', 'selah-core' ),
 		'err_profil'       => __( 'Choisis ton profil.', 'selah-core' ),
@@ -237,8 +239,9 @@ function selah_core_formulaire( $atts ) {
 			$valeur( 'message' ),
 			$erreurs,
 			array(
-				'aide'   => __( '(facultatif)', 'selah-core' ),
-				'classe' => 'selah-formulaire__champ--message',
+				'aide'        => __( '(facultatif)', 'selah-core' ),
+				'classe'      => 'selah-formulaire__champ--message',
+				'placeholder' => $textes['message_indice'],
 			)
 		);
 		?>
@@ -277,7 +280,7 @@ add_shortcode( 'selah_demande_acces', 'selah_core_formulaire' );
  * @param string               $type    text, email, tel ou textarea.
  * @param string               $valeur  Valeur saisie.
  * @param array<string,string> $erreurs Erreurs par champ.
- * @param array                $options required, autocomplete, aide, classe.
+ * @param array                $options required, autocomplete, aide, classe, placeholder.
  */
 function selah_core_champ( $id, $nom, $libelle, $type, $valeur, $erreurs, $options = array() ) {
 	$champ_id = $id . '-' . $nom;
@@ -299,13 +302,14 @@ function selah_core_champ( $id, $nom, $libelle, $type, $valeur, $erreurs, $optio
 	}
 
 	$attributs = sprintf(
-		'id="%1$s" name="%2$s"%3$s%4$s%5$s%6$s',
+		'id="%1$s" name="%2$s"%3$s%4$s%5$s%6$s%7$s',
 		esc_attr( $champ_id ),
 		esc_attr( $nom ),
 		$requis ? ' required' : '',
 		! empty( $options['autocomplete'] ) ? ' autocomplete="' . esc_attr( $options['autocomplete'] ) . '"' : '',
 		$erreur ? ' aria-invalid="true"' : '',
-		$decrit ? ' aria-describedby="' . esc_attr( implode( ' ', $decrit ) ) . '"' : ''
+		$decrit ? ' aria-describedby="' . esc_attr( implode( ' ', $decrit ) ) . '"' : '',
+		! empty( $options['placeholder'] ) ? ' placeholder="' . esc_attr( $options['placeholder'] ) . '"' : ''
 	);
 
 	if ( 'textarea' === $type ) {

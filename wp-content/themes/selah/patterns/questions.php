@@ -19,8 +19,8 @@
 <p class="selah-surtitre">Questions</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Avant<br>d’entrer.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Avant<br>d’entrer.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","textColor":"gris","fontSize":"chapo"} -->

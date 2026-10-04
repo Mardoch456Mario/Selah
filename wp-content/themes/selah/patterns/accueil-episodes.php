@@ -18,8 +18,8 @@
 <p class="selah-surtitre">Comment ça marche</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Trois épisodes.<br>Zéro cabine d’essayage.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Trois épisodes.<br>Zéro cabine d’essayage.</h2>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 

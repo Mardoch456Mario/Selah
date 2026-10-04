@@ -103,7 +103,7 @@
 				{ "slug": "legende", "name": "Légende", "size": "0.8125rem" },
 				{ "slug": "secondaire", "name": "Secondaire", "size": "0.9375rem" },
 				{ "slug": "corps", "name": "Corps", "size": "1.0625rem" },
-				{ "slug": "chapo", "name": "Chapô", "size": "clamp(1.0625rem, 0.95rem + 0.45vw, 1.3125rem)" },
+				{ "slug": "chapo", "name": "Chapô", "size": "clamp(1.0625rem, 1.35vw, 1.25rem)" },
 				{ "slug": "sous-titre", "name": "Sous-titre", "size": "clamp(1.3125rem, 1.05rem + 0.9vw, 1.75rem)" },
 				{ "slug": "titre", "name": "Titre", "size": "clamp(1.625rem, 1.1rem + 1.8vw, 2.75rem)" },
 				{ "slug": "affiche", "name": "Affiche", "size": "clamp(2.75rem, 1.2rem + 5.2vw, 6.5rem)" },

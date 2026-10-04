@@ -17,8 +17,8 @@
 <p class="selah-surtitre">Entre amis</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Le meilleur miroir,<br>c’est ta bande.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Le meilleur miroir,<br>c’est ta bande.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#e2e2e2"}},"fontSize":"chapo"} -->

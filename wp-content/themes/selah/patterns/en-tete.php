@@ -25,11 +25,11 @@
 
 <!-- wp:navigation-link {"label":"Questions","url":"<?php echo esc_url( home_url( '/questions-frequentes/' ) ); ?>","kind":"custom"} /-->
 
-<!-- wp:navigation-link {"label":"J’ai un code","url":"#selah-app","kind":"custom","className":"selah-seulement-mobile"} /-->
+<!-- wp:navigation-link {"label":"J’ai un code","url":"#selah-app","kind":"custom","className":"selah-menu-seulement"} /-->
 <!-- /wp:navigation -->
 
-<!-- wp:buttons {"className":"selah-masquer-mobile","style":{"spacing":{"margin":{"left":"auto"}}}} -->
-<div class="wp-block-buttons selah-masquer-mobile" style="margin-left:auto"><!-- wp:button {"className":"is-style-outline selah-bouton-petit"} -->
+<!-- wp:buttons {"style":{"spacing":{"margin":{"left":"auto"}}}} -->
+<div class="wp-block-buttons" style="margin-left:auto"><!-- wp:button {"className":"is-style-outline selah-bouton-petit"} -->
 <div class="wp-block-button is-style-outline selah-bouton-petit"><a class="wp-block-button__link wp-element-button" href="#selah-app">J’ai un code</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>

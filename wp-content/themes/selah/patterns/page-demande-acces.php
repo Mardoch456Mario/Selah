@@ -20,8 +20,8 @@
 <p class="selah-surtitre selah-surtitre--pastille">Démonstration privée</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":1,"className":"selah-affiche","fontSize":"affiche"} -->
-<h1 class="wp-block-heading selah-affiche has-affiche-font-size">Le rideau<br>se lève<br>avec un code.</h1>
+<!-- wp:heading {"level":1,"className":"selah-affiche"} -->
+<h1 class="wp-block-heading selah-affiche">Le rideau<br>se lève<br>avec un code.</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#ececec"}},"fontSize":"chapo"} -->

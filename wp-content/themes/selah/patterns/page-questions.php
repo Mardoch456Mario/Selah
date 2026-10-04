@@ -64,8 +64,8 @@
 <p class="selah-surtitre selah-surtitre--pastille">Démonstration privée</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Une autre<br>question ?</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Une autre<br>question ?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#ececec"}},"fontSize":"chapo"} -->

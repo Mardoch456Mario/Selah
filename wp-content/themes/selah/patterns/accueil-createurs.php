@@ -23,8 +23,8 @@
 <p class="selah-surtitre">Créateurs de Cotonou</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Votre atelier,<br>à l’affiche.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Votre atelier,<br>à l’affiche.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","textColor":"gris","fontSize":"chapo"} -->
@@ -45,7 +45,8 @@
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
 
-<!-- wp:buttons -->
+<!-- wp:group {"className":"selah-carte-affiche__actions","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group selah-carte-affiche__actions"><!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
 <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/demande-acces/?profil=createur' ) ); ?>">Rejoindre le showroom</a></div>
 <!-- /wp:button --></div>
@@ -54,6 +55,7 @@
 <!-- wp:paragraph {"className":"selah-lien-fleche"} -->
 <p class="selah-lien-fleche"><a href="<?php echo esc_url( home_url( '/createurs/' ) ); ?>">Tout savoir pour les créateurs</a></p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

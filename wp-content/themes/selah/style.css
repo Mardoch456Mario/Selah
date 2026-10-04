@@ -25,6 +25,8 @@ Tags: block-patterns, full-site-editing, one-column, custom-colors, editor-style
 	--selah-entete: 84px;
 	--selah-noir: var(--wp--preset--color--noir, #070707);
 	--selah-safran: var(--wp--preset--color--safran, #f4a91f);
+	--selah-icone-fleche: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+	--selah-icone-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9.5'/%3E%3Cpath d='M12 11v6M12 7.5v.01'/%3E%3C/svg%3E");
 }
 
 @media (max-width: 560px) {
@@ -39,7 +41,7 @@ html {
 
 body {
 	-webkit-font-smoothing: antialiased;
-	overflow-x: hidden;
+	overflow-x: clip; /* « hidden » ferait de body un conteneur de défilement et casserait l'en-tête collant. */
 }
 
 ::selection {
@@ -85,6 +87,11 @@ h3 {
 	scroll-margin-top: calc(var(--selah-entete) + 0.5rem);
 }
 
+/* L'appel final a déjà son propre espace en haut : il se cale au bord. */
+.wp-site-blocks .selah-appel[id] {
+	scroll-margin-top: 0;
+}
+
 /* ------------------------------------------------------------------
  * Typographie d'affiche
  * ------------------------------------------------------------------ */
@@ -105,6 +112,7 @@ h3 {
 .selah-surtitre--pastille::before {
 	content: "";
 	flex: none;
+	margin-left: 4px; /* le halo déborde de 4px : le point s'aligne sur la marge. */
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
@@ -114,6 +122,7 @@ h3 {
 
 .selah-affiche {
 	font-family: var(--wp--preset--font-family--anton);
+	font-size: var(--wp--preset--font-size--affiche);
 	font-weight: 400;
 	letter-spacing: 0.005em;
 	line-height: 1.12;
@@ -128,7 +137,19 @@ h3 {
 
 .selah-affiche--xl {
 	font-size: var(--wp--preset--font-size--affiche-xl);
+	line-height: 1.02;
+}
+
+/* Sur l'ouverture, les lignes se serrent comme sur une affiche de film. */
+.selah-ouverture .selah-affiche--xl {
 	line-height: 0.9;
+}
+
+/* Mot très long (« confidentialité ») : il doit tenir sur un téléphone. */
+@media (max-width: 560px) {
+	.selah-affiche--mot-long {
+		font-size: min(var(--wp--preset--font-size--affiche-xl), 14.5vw) !important;
+	}
 }
 
 .selah-chapo {
@@ -159,8 +180,19 @@ h3 {
 	width: 20px;
 	height: 20px;
 	background: currentColor;
-	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
-	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+	-webkit-mask: var(--selah-icone-fleche) center / contain no-repeat;
+	mask: var(--selah-icone-fleche) center / contain no-repeat;
+}
+
+/* Icône « i » avant le texte (« Comment ça marche »). */
+.wp-block-button.selah-info .wp-element-button::before {
+	content: "";
+	flex: none;
+	width: 20px;
+	height: 20px;
+	background: currentColor;
+	-webkit-mask: var(--selah-icone-info) center / contain no-repeat;
+	mask: var(--selah-icone-info) center / contain no-repeat;
 }
 
 /* Bouton « verre » : translucide sur les images. */
@@ -204,13 +236,20 @@ h3 {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
+	margin-left: -4px;
 	padding: 12px 4px;
 	font-weight: 700;
 	text-decoration: none;
 }
 
 .selah-lien-fleche a::after {
-	content: "→";
+	content: "";
+	flex: none;
+	width: 18px;
+	height: 18px;
+	background: currentColor;
+	-webkit-mask: var(--selah-icone-fleche) center / contain no-repeat;
+	mask: var(--selah-icone-fleche) center / contain no-repeat;
 	transition: transform 0.15s ease;
 }
 
@@ -246,14 +285,46 @@ h3 {
 	}
 }
 
+/*
+ * Pas de backdrop-filter, filter ni transform ici : ils enfermeraient le menu
+ * mobile (position fixe) dans l'en-tête.
+ */
 .selah-entete {
 	height: var(--selah-entete);
 	padding: 0 var(--selah-gouttiere) !important;
-	background: linear-gradient(180deg, rgb(7 7 7 / 0.88) 0%, rgb(7 7 7 / 0.55) 55%, rgb(7 7 7 / 0) 100%);
+	background-color: rgb(7 7 7 / 0);
+	background-image: linear-gradient(180deg, rgb(7 7 7 / 0.88) 0%, rgb(7 7 7 / 0.55) 55%, rgb(7 7 7 / 0) 100%);
+}
+
+/* Dès qu'on défile, le fond devient noir pour que le menu reste lisible. */
+@keyframes selah-entete-fond {
+	to {
+		background-color: rgb(7 7 7 / 0.94);
+		box-shadow: 0 1px 0 var(--wp--preset--color--trait);
+	}
+}
+
+@supports (animation-timeline: scroll()) {
+	.selah-entete {
+		animation: selah-entete-fond linear both;
+		animation-timeline: scroll(root);
+		animation-range: 0 140px;
+	}
+}
+
+@supports not (animation-timeline: scroll()) {
+	.selah-entete {
+		background-color: rgb(7 7 7 / 0.9);
+	}
 }
 
 .selah-entete > .wp-block-group {
 	height: 100%;
+	gap: clamp(20px, 3vw, 48px);
+}
+
+.selah-entete .wp-block-navigation__container {
+	gap: clamp(18px, 2.2vw, 32px);
 }
 
 /* Le point safran du logo « Selah. ». */
@@ -274,6 +345,10 @@ h3 {
 
 .selah-entete .wp-block-navigation a:hover {
 	color: var(--wp--preset--color--blanc);
+}
+
+.selah-entete .wp-block-navigation a[aria-current="page"] {
+	color: var(--selah-safran);
 }
 
 /* Menu mobile ouvert : plein écran noir, grands liens. */
@@ -322,10 +397,21 @@ h3 {
 	.selah-masquer-mobile {
 		display: none !important;
 	}
+}
 
-	/* Sans le bouton « J'ai un code », le menu se range à droite. */
+/* Le lien « J'ai un code » du menu ne sert que dans le menu mobile ouvert. */
+.selah-entete .wp-block-navigation__responsive-container:not(.is-menu-open) .selah-menu-seulement {
+	display: none !important;
+}
+
+/* Sur téléphone : logo, puis « J'ai un code », puis le bouton du menu. */
+@media (max-width: 599px) {
 	.selah-entete .wp-block-navigation {
-		margin-left: auto;
+		order: 2;
+	}
+
+	.selah-entete .wp-block-buttons {
+		margin-left: auto !important;
 	}
 }
 
@@ -365,6 +451,7 @@ h3 {
 
 .selah-ouverture__texte {
 	max-width: 31em;
+	font-size: clamp(1.0625rem, 1.45vw, 1.3125rem) !important;
 	color: #e6e6e6;
 }
 
@@ -434,8 +521,33 @@ h3 {
 }
 
 /* Tête de page sans image (confidentialité, journal…). */
-.selah-tete-simple {
+.selah-tete-simple,
+.selah-section.selah-tete-simple {
 	padding-top: calc(var(--selah-entete) + clamp(48px, 7vw, 110px)) !important;
+}
+
+.wp-block-cover.selah-tete-page .selah-chapo {
+	max-width: 36em;
+	text-wrap: balance;
+}
+
+@media (max-width: 560px) {
+	.wp-block-cover.selah-tete-page .wp-block-buttons > .wp-block-button {
+		flex: 1 1 100%;
+	}
+
+	.wp-block-cover.selah-tete-page .wp-block-buttons > .wp-block-button > .wp-block-button__link {
+		width: 100%;
+	}
+
+	/* Recadrage des images d'en-tête sur téléphone. */
+	.wp-block-cover.selah-cadrage-droite > .wp-block-cover__image-background {
+		object-position: 88% 25% !important;
+	}
+
+	.wp-block-cover.selah-cadrage-gauche > .wp-block-cover__image-background {
+		object-position: 35% 40% !important;
+	}
 }
 
 /* ------------------------------------------------------------------
@@ -456,6 +568,11 @@ h3 {
 
 .selah-rangee {
 	display: block;
+}
+
+.selah-rangees > .selah-rangee,
+.selah-rangee > .selah-defile {
+	margin-block-start: 0;
 }
 
 .selah-rangee__tete {
@@ -483,8 +600,20 @@ h3 {
 	color: var(--wp--preset--color--gris);
 }
 
+.selah-indice {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
 .selah-indice::after {
-	content: " →";
+	content: "";
+	flex: none;
+	width: 16px;
+	height: 16px;
+	background: currentColor;
+	-webkit-mask: var(--selah-icone-fleche) center / contain no-repeat;
+	mask: var(--selah-icone-fleche) center / contain no-repeat;
 }
 
 .selah-defile {
@@ -641,6 +770,7 @@ h3 {
 
 .selah-section__tete {
 	display: grid;
+	grid-template-columns: minmax(0, 1fr);
 	gap: 18px;
 	max-width: 1100px;
 	margin-bottom: clamp(36px, 4vw, 56px);
@@ -734,7 +864,7 @@ h3 {
 
 .selah-ep h3 {
 	margin: 0 0 14px;
-	font-size: clamp(1.625rem, 1rem + 2vw, 2.75rem);
+	font-size: clamp(1.625rem, 2.8vw, 2.75rem);
 	font-weight: 800;
 	letter-spacing: -0.025em;
 	line-height: 1.05;
@@ -773,7 +903,7 @@ h3 {
 	opacity: 1 !important;
 	background:
 		linear-gradient(180deg, var(--selah-noir) 0%, rgb(7 7 7 / 0) 18%),
-		linear-gradient(0deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.82) 26%, rgb(7 7 7 / 0.2) 55%, rgb(7 7 7 / 0) 70%) !important;
+		linear-gradient(0deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.85) 30%, rgb(7 7 7 / 0.62) 50%, rgb(7 7 7 / 0) 72%) !important;
 }
 
 .wp-block-cover.selah-plein-cadre > .wp-block-cover__inner-container {
@@ -785,6 +915,10 @@ h3 {
 
 .wp-block-cover.selah-plein-cadre > .wp-block-cover__inner-container > * {
 	margin: 0;
+}
+
+.wp-block-cover.selah-plein-cadre .selah-chapo {
+	max-width: 40em;
 }
 
 @media (max-width: 560px) {
@@ -855,6 +989,14 @@ h3 {
 
 .selah-carte-affiche__texte .selah-affiche {
 	font-size: clamp(2.75rem, 5.4vw, 5.5rem);
+}
+
+.selah-carte-affiche__actions {
+	gap: 12px 20px !important;
+}
+
+.selah-carte-affiche__actions > * {
+	margin: 0 !important;
 }
 
 /* Liste d'atouts à icônes. */
@@ -961,6 +1103,10 @@ h3 {
 .selah-faq {
 	display: grid !important;
 	gap: 8px !important;
+}
+
+.selah-section > .selah-faq {
+	max-width: 880px;
 }
 
 .selah-faq > * {
@@ -1137,6 +1283,46 @@ h3 {
 	border-radius: var(--selah-rayon);
 }
 
+/* Sans image à la une, une texture de kanvo tient la place. */
+.selah-liste-articles .wp-block-post:not(:has(.wp-block-post-featured-image))::before {
+	content: "";
+	display: block;
+	aspect-ratio: 16 / 10;
+	margin-bottom: var(--wp--style--block-gap, 1.25rem);
+	border-radius: var(--selah-rayon);
+	background: url("assets/images/site/texture-kanvo.webp") center / cover no-repeat;
+}
+
+/* Les pages n'ont pas de date utile dans les résultats de recherche. */
+.selah-liste-articles .type-page .wp-block-post-date {
+	display: none;
+}
+
+/* Champ de recherche sombre. */
+.wp-block-search .wp-block-search__inside-wrapper {
+	max-width: 680px;
+	gap: 8px;
+}
+
+.wp-block-search .wp-block-search__input {
+	min-height: 52px;
+	padding: 0 22px;
+	border: 1.5px solid #6e6e6e;
+	border-radius: 999px;
+	background: #161616;
+	color: var(--wp--preset--color--blanc);
+	font: inherit;
+}
+
+.wp-block-search .wp-block-search__input::placeholder {
+	color: #8c8c8c;
+}
+
+.wp-block-search .wp-block-search__button {
+	min-height: 52px;
+	margin-left: 0;
+}
+
 .selah-liste-articles .wp-block-post-title a:hover {
 	color: var(--selah-safran);
 }
@@ -1222,5 +1408,11 @@ h3 {
 
 	.selah-pied__marque {
 		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 600px) {
+	.selah-pied__bas {
+		flex-direction: column;
 	}
 }

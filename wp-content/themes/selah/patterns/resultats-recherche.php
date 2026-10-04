@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Liste des articles
- * Slug: selah/liste-articles
+ * Title: Résultats de recherche
+ * Slug: selah/resultats-recherche
  * Categories: selah, query
  * Block Types: core/query
  * Inserter: no
@@ -33,7 +33,7 @@
 
 <!-- wp:query-no-results -->
 <!-- wp:paragraph {"textColor":"gris","fontSize":"chapo"} -->
-<p class="has-gris-color has-text-color has-chapo-font-size">Rien à afficher pour l’instant. Les premières nouvelles arrivent bientôt.</p>
+<p class="has-gris-color has-text-color has-chapo-font-size">Aucun résultat pour cette recherche. Essaie un autre mot, ou parcours le <a href="<?php echo esc_url( home_url( '/journal/' ) ); ?>">journal</a>.</p>
 <!-- /wp:paragraph -->
 <!-- /wp:query-no-results --></div>
 <!-- /wp:query -->

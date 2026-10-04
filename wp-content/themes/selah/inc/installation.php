@@ -13,19 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Pages du site : identifiant => titre, composition, modèle.
+ * Pages du site : identifiant => titre, composition, modèle, résumé.
+ * Le résumé s'affiche dans les résultats de recherche.
  *
- * @return array<string, array{0: string, 1: string, 2: string}>
+ * @return array<string, array{0: string, 1: string, 2: string, 3: string}>
  */
 function selah_pages_du_site() {
 	return array(
-		'accueil'              => array( 'Accueil', '', '' ),
-		'journal'              => array( 'Journal', '', '' ),
-		'createurs'            => array( 'Créateurs', 'selah/page-createurs', 'page-sans-titre' ),
-		'a-propos'             => array( 'À propos', 'selah/page-a-propos', 'page-sans-titre' ),
-		'questions-frequentes' => array( 'Questions fréquentes', 'selah/page-questions', 'page-sans-titre' ),
-		'demande-acces'        => array( 'Demander un accès', 'selah/page-demande-acces', 'page-sans-titre' ),
-		'confidentialite'      => array( 'Confidentialité', 'selah/page-confidentialite', 'page-sans-titre' ),
+		'accueil'              => array( 'Accueil', '', '', 'Ton personnage essaie pour toi les pièces des créateurs de Cotonou. Tu regardes, tu demandes l’avis de tes amis, tu gardes ce qui te va.' ),
+		'journal'              => array( 'Journal', '', '', 'Les nouvelles de Selah.' ),
+		'createurs'            => array( 'Créateurs', 'selah/page-createurs', 'page-sans-titre', 'Sur Selah, vos pièces ne dorment pas sur un cintre : chacun les voit portées par son propre personnage, puis les montre à ses amis.' ),
+		'a-propos'             => array( 'À propos', 'selah/page-a-propos', 'page-sans-titre', 'Selah est un showroom de mode. Ton personnage essaie pour toi les pièces des créateurs de Cotonou, tes amis donnent leur avis, tu gardes ce qui te va.' ),
+		'questions-frequentes' => array( 'Questions fréquentes', 'selah/page-questions', 'page-sans-titre', 'Tout ce qu’il faut savoir pour entrer dans le showroom Selah.' ),
+		'demande-acces'        => array( 'Demander un accès', 'selah/page-demande-acces', 'page-sans-titre', 'Selah ouvre ses portes petit à petit. Laisse ta demande : l’équipe revient vers toi avec un code.' ),
+		'confidentialite'      => array( 'Confidentialité', 'selah/page-confidentialite', 'page-sans-titre', 'Ce que nous faisons des informations que tu nous confies sur ce site.' ),
 	);
 }
 
@@ -60,7 +61,7 @@ function selah_installer_pages() {
 	$journal = array();
 	$ids     = array();
 
-	foreach ( selah_pages_du_site() as $slug => list( $titre, $composition, $modele ) ) {
+	foreach ( selah_pages_du_site() as $slug => list( $titre, $composition, $modele, $resume ) ) {
 		$existante = get_page_by_path( $slug );
 		if ( $existante && 'trash' !== $existante->post_status ) {
 			$ids[ $slug ] = $existante->ID;
@@ -75,6 +76,7 @@ function selah_installer_pages() {
 				'post_title'    => $titre,
 				'post_name'     => $slug,
 				'post_content'  => $composition ? selah_contenu_composition( $composition ) : '',
+				'post_excerpt'  => $resume,
 				'page_template' => $modele,
 			),
 			true

@@ -133,6 +133,62 @@ function selah_formulaire_dans_les_modeles( $contenu ) {
 add_filter( 'render_block_core/shortcode', 'selah_formulaire_dans_les_modeles' );
 
 /**
+ * Signale la page en cours dans le menu (les liens personnalisés n'ont pas
+ * cette information d'origine).
+ *
+ * @param string $contenu Rendu du lien de navigation.
+ * @return string
+ */
+function selah_lien_de_la_page_courante( $contenu ) {
+	if ( is_admin() || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $contenu;
+	}
+
+	$balises = new WP_HTML_Tag_Processor( $contenu );
+	if ( ! $balises->next_tag( 'a' ) ) {
+		return $contenu;
+	}
+
+	$adresse = $balises->get_attribute( 'href' );
+	if ( ! is_string( $adresse ) || '' === $adresse || false !== strpos( $adresse, '#' ) ) {
+		return $contenu;
+	}
+
+	$hote_lien = wp_parse_url( $adresse, PHP_URL_HOST );
+	$hote_site = wp_parse_url( home_url(), PHP_URL_HOST );
+	if ( $hote_lien && $hote_lien !== $hote_site ) {
+		return $contenu;
+	}
+
+	$chemin_lien  = untrailingslashit( (string) wp_parse_url( $adresse, PHP_URL_PATH ) );
+	$chemin_page  = untrailingslashit( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '', PHP_URL_PATH ) );
+	$chemin_index = untrailingslashit( (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH ) );
+	if ( $chemin_lien === $chemin_index || $chemin_lien !== $chemin_page ) {
+		return $contenu;
+	}
+
+	$balises->set_attribute( 'aria-current', 'page' );
+	return $balises->get_updated_html();
+}
+add_filter( 'render_block_core/navigation-link', 'selah_lien_de_la_page_courante' );
+
+/**
+ * Les titres d'affiche coupent leurs lignes avec <br> : sans espace, les
+ * résumés automatiques colleraient les mots (« Le rideause lève »).
+ * Ne s'applique que pendant le calcul d'un résumé.
+ *
+ * @param string $contenu Contenu rendu.
+ * @return string
+ */
+function selah_espaces_dans_les_resumes( $contenu ) {
+	if ( ! doing_filter( 'get_the_excerpt' ) ) {
+		return $contenu;
+	}
+	return preg_replace( '#<br\s*/?>#i', ' ', $contenu );
+}
+add_filter( 'the_content', 'selah_espaces_dans_les_resumes', 99 );
+
+/**
  * Icône du site par défaut tant qu'aucune n'est choisie dans l'administration.
  */
 function selah_icone_par_defaut() {

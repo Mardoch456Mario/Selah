@@ -44,8 +44,8 @@
 <div class="wp-block-button selah-fleche"><a class="wp-block-button__link wp-element-button" href="#demande-acces">Demander mon code</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"className":"is-style-verre"} -->
-<div class="wp-block-button is-style-verre"><a class="wp-block-button__link wp-element-button" href="#comment-ca-marche">Comment ça marche</a></div>
+<!-- wp:button {"className":"is-style-verre selah-info"} -->
+<div class="wp-block-button is-style-verre selah-info"><a class="wp-block-button__link wp-element-button" href="#comment-ca-marche">Comment ça marche</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div></section>
 <!-- /wp:cover -->
@@ -183,8 +183,8 @@
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.4},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>" style="object-position:50% 40%" data-object-fit="cover" data-object-position="50% 40%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.15},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>" style="object-position:50% 15%" data-object-fit="cover" data-object-position="50% 15%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
 <p class="selah-occasion__label">Bazin brodé</p>
 <!-- /wp:paragraph -->
 

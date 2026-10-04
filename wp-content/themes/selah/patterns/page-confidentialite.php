@@ -19,8 +19,8 @@
 <p class="selah-surtitre">Vie privée</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":1,"className":"selah-affiche selah-affiche\u002d\u002dxl"} -->
-<h1 class="wp-block-heading selah-affiche selah-affiche--xl">Confidentialité</h1>
+<!-- wp:heading {"level":1,"className":"selah-affiche selah-affiche\u002d\u002dxl selah-affiche\u002d\u002dmot-long"} -->
+<h1 class="wp-block-heading selah-affiche selah-affiche--xl selah-affiche--mot-long">Confidentialité</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","textColor":"gris","fontSize":"chapo"} -->

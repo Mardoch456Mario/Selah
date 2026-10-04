@@ -72,8 +72,10 @@
 	border-radius: 10px;
 	background: var(--sf-champ);
 	color: var(--sf-blanc);
-	font: 500 1rem/1.4 inherit;
 	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.4;
 }
 
 .selah-formulaire textarea {
@@ -144,6 +146,11 @@
 .selah-formulaire__choix input:focus-visible + span {
 	outline: 3px solid var(--sf-safran);
 	outline-offset: 2px;
+}
+
+/* Sans le champ « Marque », le téléphone prend toute la largeur. */
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) .selah-formulaire__champ:has(input[name="telephone"]) {
+	grid-column: 1 / -1;
 }
 
 /*
@@ -266,7 +273,19 @@
 		grid-template-columns: 1fr;
 	}
 
+	/* Chaque pilule prend la largeur de son texte et passe à la ligne s'il le faut. */
+	.selah-formulaire__choix-liste {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.selah-formulaire__choix {
+		flex: 1 1 auto;
+	}
+
 	.selah-formulaire__choix span {
-		font-size: 0.875rem;
+		padding: 0 14px;
+		font-size: 0.8125rem;
+		white-space: nowrap;
 	}
 }

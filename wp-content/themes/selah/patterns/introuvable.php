@@ -11,8 +11,8 @@
  */
 
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/chemise-wax.webp' ) ); ?>","alt":"Homme en chemise wax, de nuit dans une rue de Cotonou.","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.28},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page","layout":{"type":"default"}} -->
-<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page"><img class="wp-block-cover__image-background" alt="Homme en chemise wax, de nuit dans une rue de Cotonou." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/chemise-wax.webp' ) ); ?>" style="object-position:50% 28%" data-object-fit="cover" data-object-position="50% 28%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>","alt":"Trois mannequins en tenues wax et kanvô, debout dans un studio noir.","overlayColor":"noir","focalPoint":{"x":0.62,"y":0.3},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page selah-cadrage-droite","layout":{"type":"default"}} -->
+<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page selah-cadrage-droite"><img class="wp-block-cover__image-background" alt="Trois mannequins en tenues wax et kanvô, debout dans un studio noir." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>" style="object-position:62% 30%" data-object-fit="cover" data-object-position="62% 30%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
 <p class="selah-surtitre">Erreur 404</p>
 <!-- /wp:paragraph -->
 

@@ -13,8 +13,8 @@
  */
 
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>","alt":"Trois mannequins en tenues wax et kanvô, debout dans un studio noir.","overlayColor":"noir","focalPoint":{"x":0.62,"y":0.3},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page","layout":{"type":"default"}} -->
-<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page"><img class="wp-block-cover__image-background" alt="Trois mannequins en tenues wax et kanvô, debout dans un studio noir." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>" style="object-position:62% 30%" data-object-fit="cover" data-object-position="62% 30%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>","alt":"Trois mannequins en tenues wax et kanvô, debout dans un studio noir.","overlayColor":"noir","focalPoint":{"x":0.62,"y":0.3},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page selah-cadrage-droite","layout":{"type":"default"}} -->
+<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page selah-cadrage-droite"><img class="wp-block-cover__image-background" alt="Trois mannequins en tenues wax et kanvô, debout dans un studio noir." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>" style="object-position:62% 30%" data-object-fit="cover" data-object-position="62% 30%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
 <p class="selah-surtitre">À propos</p>
 <!-- /wp:paragraph -->
 
@@ -34,8 +34,8 @@
 <p class="selah-surtitre">Notre idée</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Choisir,<br>c’est hésiter.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Choisir,<br>c’est hésiter.</h2>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
@@ -60,8 +60,8 @@
 <p class="selah-surtitre">Le fil safran</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Noir, blanc,<br>et un fil de <em>kanvô.</em></h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Noir, blanc,<br>et un fil de <em>kanvô.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#e2e2e2"}},"fontSize":"chapo"} -->
@@ -80,8 +80,8 @@
 <p class="selah-surtitre">Créateurs de Cotonou</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Votre atelier,<br>à l’affiche.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Votre atelier,<br>à l’affiche.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","textColor":"gris","fontSize":"chapo"} -->
@@ -102,7 +102,8 @@
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
 
-<!-- wp:buttons -->
+<!-- wp:group {"className":"selah-carte-affiche__actions","layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"center"}} -->
+<div class="wp-block-group selah-carte-affiche__actions"><!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
 <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/demande-acces/?profil=createur' ) ); ?>">Rejoindre le showroom</a></div>
 <!-- /wp:button --></div>
@@ -111,6 +112,7 @@
 <!-- wp:paragraph {"className":"selah-lien-fleche"} -->
 <p class="selah-lien-fleche"><a href="<?php echo esc_url( home_url( '/createurs/' ) ); ?>">Tout savoir pour les créateurs</a></p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->
@@ -122,8 +124,8 @@
 <p class="selah-surtitre selah-surtitre--pastille">Démonstration privée</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Le rideau<br>se lève<br>avec un code.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Le rideau<br>se lève<br>avec un code.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#ececec"}},"fontSize":"chapo"} -->

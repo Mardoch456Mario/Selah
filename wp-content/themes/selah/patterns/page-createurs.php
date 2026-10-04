@@ -13,8 +13,8 @@
  */
 
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>","alt":"Une créatrice coud du wax à la machine dans son atelier, devant des rouleaux de tissus.","overlayColor":"noir","focalPoint":{"x":0.4,"y":0.5},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page","layout":{"type":"default"}} -->
-<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page"><img class="wp-block-cover__image-background" alt="Une créatrice coud du wax à la machine dans son atelier, devant des rouleaux de tissus." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>" style="object-position:40% 50%" data-object-fit="cover" data-object-position="40% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>","alt":"Une créatrice coud du wax à la machine dans son atelier, devant des rouleaux de tissus.","overlayColor":"noir","focalPoint":{"x":0.4,"y":0.5},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page selah-cadrage-gauche","layout":{"type":"default"}} -->
+<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page selah-cadrage-gauche"><img class="wp-block-cover__image-background" alt="Une créatrice coud du wax à la machine dans son atelier, devant des rouleaux de tissus." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>" style="object-position:40% 50%" data-object-fit="cover" data-object-position="40% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
 <p class="selah-surtitre">Créateurs de Cotonou</p>
 <!-- /wp:paragraph -->
 
@@ -39,8 +39,8 @@
 <p class="selah-surtitre">Ce que Selah change</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Portées.<br>Partagées.<br>Choisies.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Portées.<br>Partagées.<br>Choisies.</h2>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
@@ -85,7 +85,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-indice"} -->
-<p class="selah-indice">Fais défiler</p>
+<p class="selah-indice">Faites défiler</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -110,8 +110,8 @@
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.4},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>" style="object-position:50% 40%" data-object-fit="cover" data-object-position="50% 40%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.15},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>" style="object-position:50% 15%" data-object-fit="cover" data-object-position="50% 15%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
 <p class="selah-occasion__label">Broderie</p>
 <!-- /wp:paragraph -->
 
@@ -149,8 +149,8 @@
 <p class="selah-surtitre">Rejoindre Selah</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Trois étapes.<br>Pas une de plus.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Trois étapes.<br>Pas une de plus.</h2>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
@@ -160,8 +160,8 @@
 <p class="selah-ep__num">1</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.5},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>" style="object-position:50% 50%" data-object-fit="cover" data-object-position="50% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.22},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>" style="object-position:50% 22%" data-object-fit="cover" data-object-position="50% 22%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
 <p class="selah-ep__etiquette">Épisode 1</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
@@ -182,8 +182,8 @@
 <p class="selah-ep__num">2</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.4,"y":0.5},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-2","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-2"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>" style="object-position:40% 50%" data-object-fit="cover" data-object-position="40% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.4},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-2","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-2"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/heros.webp' ) ); ?>" style="object-position:50% 40%" data-object-fit="cover" data-object-position="50% 40%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
 <p class="selah-ep__etiquette">Épisode 2</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
@@ -204,8 +204,8 @@
 <p class="selah-ep__num">3</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-soiree.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.25},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-3","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-3"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-soiree.webp' ) ); ?>" style="object-position:50% 25%" data-object-fit="cover" data-object-position="50% 25%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/amis.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.4},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-3","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-3"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/amis.webp' ) ); ?>" style="object-position:50% 40%" data-object-fit="cover" data-object-position="50% 40%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
 <p class="selah-ep__etiquette">Épisode 3</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
@@ -230,8 +230,8 @@
 <p class="selah-surtitre selah-surtitre--pastille">Démonstration privée</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
-<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Présentez-nous<br>votre travail.</h2>
+<!-- wp:heading {"className":"selah-affiche"} -->
+<h2 class="wp-block-heading selah-affiche">Présentez-nous<br>votre travail.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#ececec"}},"fontSize":"chapo"} -->
@@ -239,7 +239,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"selah-deja"} -->
-<p class="selah-deja">Tu as déjà ton code ? <a href="#selah-app">Entre dans Selah</a></p>
+<p class="selah-deja">Vous avez déjà votre code ? <a href="#selah-app">Entrez dans Selah</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

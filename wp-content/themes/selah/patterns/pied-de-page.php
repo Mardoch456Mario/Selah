@@ -20,7 +20,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"14px"}}},"textColor":"gris"} -->
-<p class="has-gris-color has-text-color" style="margin-top:14px">Le showroom des créateurs de Cotonou, dans ton téléphone. S’ouvre dans le navigateur, s’installe sur l’écran d’accueil.</p>
+<p class="has-gris-color has-text-color" style="margin-top:14px">Le showroom des créateurs de Cotonou, sur téléphone. S’ouvre dans le navigateur, s’installe sur l’écran d’accueil.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
