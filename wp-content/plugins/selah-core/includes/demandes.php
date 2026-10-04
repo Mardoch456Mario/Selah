@@ -25,6 +25,19 @@ function selah_core_profils() {
 }
 
 /**
+ * Libellés courts des profils, pour les pilules du formulaire.
+ *
+ * @return array<string, string>
+ */
+function selah_core_profils_courts() {
+	return array(
+		'essayer'  => __( 'Essayer', 'selah-core' ),
+		'createur' => __( 'Créateur·rice', 'selah-core' ),
+		'autre'    => __( 'Presse / autre', 'selah-core' ),
+	);
+}
+
+/**
  * Étapes de suivi d'une demande.
  *
  * @return array<string, string>

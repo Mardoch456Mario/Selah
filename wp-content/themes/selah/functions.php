@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SELAH_VERSION', '1.1.0' );
+define( 'SELAH_VERSION', '2.0.0' );
 
 /**
  * Adresse par défaut de l'application Selah.
@@ -61,6 +61,20 @@ function selah_styles() {
 	wp_enqueue_style( 'selah', get_stylesheet_uri(), array(), SELAH_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'selah_styles' );
+
+/**
+ * Style de bouton « Verre » (translucide sur les images).
+ */
+function selah_styles_de_blocs() {
+	register_block_style(
+		'core/button',
+		array(
+			'name'  => 'verre',
+			'label' => __( 'Verre', 'selah' ),
+		)
+	);
+}
+add_action( 'init', 'selah_styles_de_blocs' );
 
 /**
  * Catégorie de compositions « Selah » dans l'éditeur.

@@ -1,25 +1,42 @@
-/* Formulaire de demande d'accès Selah. Reprend les couleurs du thème quand il est actif. */
+/* Formulaire de demande d'accès Selah : version sombre, en verre dépoli. */
 
 .selah-formulaire {
-	--sf-encre: var(--wp--preset--color--encre, #0b0b0c);
+	--sf-noir: var(--wp--preset--color--noir, #070707);
 	--sf-blanc: var(--wp--preset--color--blanc, #fff);
-	--sf-trait: var(--wp--preset--color--trait, #e4e4e2);
-	--sf-discret: var(--wp--preset--color--discret, #6b6b70);
-	--sf-safran: var(--wp--preset--color--safran, #c9922a);
-	--sf-erreur: var(--wp--preset--color--erreur, #b3261e);
-	--sf-succes: var(--wp--preset--color--succes, #1f7a4d);
-	--sf-contour: #8e8e93; /* contraste 3,3:1 sur blanc, minimum demandé pour un champ (WCAG 1.4.11) */
+	--sf-gris: var(--wp--preset--color--gris, #b4b4b4);
+	--sf-safran: var(--wp--preset--color--safran, #f4a91f);
+	--sf-erreur: var(--wp--preset--color--erreur, #ff7a6b);
+	--sf-succes: var(--wp--preset--color--succes, #4cc38a);
+	--sf-champ: #161616;
+	--sf-contour: #6e6e6e; /* contraste ≥ 3:1 avec la carte et le champ (WCAG 1.4.11) */
 
 	box-sizing: border-box;
 	display: grid;
-	gap: 1rem;
-	margin-block: 2rem;
-	padding: clamp(1.25rem, 1rem + 2vw, 2rem);
-	background: var(--sf-blanc);
-	border: 1px solid var(--sf-trait);
-	border-radius: 1.25rem;
-	color: var(--sf-encre);
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	margin: 0;
+	padding: clamp(22px, 3vw, 36px);
+	background: rgb(10 10 10 / 0.86);
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
+	border: 1px solid rgb(255 255 255 / 0.12);
+	border-radius: 16px;
+	color: var(--sf-blanc);
 	text-align: left;
+}
+
+.selah-formulaire > * {
+	min-width: 0;
+	margin: 0;
+}
+
+/* Ce qui occupe toute la largeur. */
+.selah-formulaire__alerte,
+.selah-formulaire__profils,
+.selah-formulaire__champ--message,
+.selah-formulaire__consentement,
+.selah-formulaire__envoyer {
+	grid-column: 1 / -1;
 }
 
 .selah-formulaire fieldset {
@@ -32,15 +49,16 @@
 .selah-formulaire legend,
 .selah-formulaire__champ label {
 	display: block;
+	margin-bottom: 8px;
 	padding: 0;
-	margin-bottom: 0.4rem;
-	font-weight: 600;
 	font-size: 0.875rem;
+	font-weight: 700;
 }
 
 .selah-formulaire__aide {
-	font-weight: 400;
-	color: var(--sf-discret);
+	font-weight: 500;
+	color: var(--sf-gris);
+	font-size: 0.8125rem;
 }
 
 .selah-formulaire input[type="text"],
@@ -49,42 +67,41 @@
 .selah-formulaire textarea {
 	box-sizing: border-box;
 	width: 100%;
-	min-height: 3rem;
-	padding: 0.7rem 1.25rem;
-	border: 1px solid var(--sf-contour);
-	border-radius: 999px;
-	background: var(--sf-blanc);
-	color: var(--sf-encre);
-	font: inherit;
-	font-size: 1rem;
+	padding: 13px 14px;
+	border: 1.5px solid var(--sf-contour);
+	border-radius: 10px;
+	background: var(--sf-champ);
+	color: var(--sf-blanc);
+	font: 500 1rem/1.4 inherit;
+	font-family: inherit;
 }
 
 .selah-formulaire textarea {
-	border-radius: 1.25rem;
+	min-height: 96px;
 	resize: vertical;
+}
+
+.selah-formulaire ::placeholder {
+	color: #8c8c8c;
 }
 
 .selah-formulaire input:focus,
 .selah-formulaire textarea:focus {
-	border-color: var(--sf-encre);
 	outline: none;
+	border-color: var(--sf-safran);
 }
 
 .selah-formulaire input:focus-visible,
 .selah-formulaire textarea:focus-visible {
-	outline: 2px solid var(--sf-encre);
+	outline: 3px solid var(--sf-safran);
 	outline-offset: 2px;
 }
 
-/* Profils : trois pilules à cocher. */
-.selah-formulaire__profils {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-}
-
-.selah-formulaire__profils legend {
-	width: 100%;
+/* Profils : trois pilules. */
+.selah-formulaire__choix-liste {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
 }
 
 .selah-formulaire__choix {
@@ -101,27 +118,31 @@
 }
 
 .selah-formulaire__choix span {
-	display: inline-block;
-	padding: 0.55rem 1rem;
-	border: 1px solid var(--sf-contour);
+	display: grid;
+	place-items: center;
+	min-height: 46px;
+	padding: 0 8px;
+	border: 1.5px solid var(--sf-contour);
 	border-radius: 999px;
-	font-size: 0.875rem;
-	font-weight: 500;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	line-height: 1.15;
+	text-align: center;
 	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .selah-formulaire__choix:hover span {
-	border-color: var(--sf-encre);
+	border-color: var(--sf-blanc);
 }
 
 .selah-formulaire__choix input:checked + span {
-	background: var(--sf-encre);
-	border-color: var(--sf-encre);
-	color: var(--sf-blanc);
+	background: var(--sf-blanc);
+	border-color: var(--sf-blanc);
+	color: var(--sf-noir);
 }
 
 .selah-formulaire__choix input:focus-visible + span {
-	outline: 2px solid var(--sf-encre);
+	outline: 3px solid var(--sf-safran);
 	outline-offset: 2px;
 }
 
@@ -136,42 +157,43 @@
 }
 
 .selah-formulaire__consentement {
-	display: flex;
-	gap: 0.6rem;
-	align-items: flex-start;
+	display: grid;
+	grid-template-columns: 22px 1fr;
+	gap: 12px;
 	font-size: 0.875rem;
-	color: var(--sf-discret);
+	line-height: 1.45;
+	color: var(--sf-gris);
 	cursor: pointer;
 }
 
 .selah-formulaire__consentement input {
-	flex: none;
-	width: 1.1rem;
-	height: 1.1rem;
-	margin-top: 0.1rem;
-	accent-color: var(--sf-encre);
+	width: 20px;
+	height: 20px;
+	margin: 1px 0 0;
+	accent-color: var(--sf-safran);
 }
 
 .selah-formulaire__consentement a {
-	color: var(--sf-encre);
+	color: var(--sf-blanc);
 }
 
 .selah-formulaire__envoyer {
-	justify-self: stretch;
-	min-height: 3rem;
-	padding: 0.7rem 1.5rem;
+	min-height: 56px;
+	padding: 0 28px;
 	border: 0;
 	border-radius: 999px;
-	background: var(--sf-encre);
-	color: var(--sf-blanc);
+	background: var(--sf-safran);
+	color: var(--sf-noir);
 	font: inherit;
-	font-weight: 600;
+	font-size: 1.0625rem;
+	font-weight: 700;
 	cursor: pointer;
+	transition: background-color 0.15s ease;
 }
 
 .selah-formulaire__envoyer:hover,
 .selah-formulaire__envoyer:focus-visible {
-	background: rgb(11 11 12 / 0.85);
+	background: #ffbb3a;
 }
 
 /* Champ piège pour les robots : hors écran, invisible des humains. */
@@ -187,8 +209,8 @@
 .selah-formulaire__alerte {
 	padding: 0.9rem 1.1rem;
 	border-left: 3px solid var(--sf-erreur);
-	border-radius: 0.5rem;
-	background: rgb(179 38 30 / 0.06);
+	border-radius: 8px;
+	background: rgb(255 122 107 / 0.1);
 	font-size: 0.875rem;
 }
 
@@ -198,8 +220,8 @@
 }
 
 .selah-formulaire__alerte ul {
-	padding-left: 1.1rem;
 	margin-top: 0.4rem;
+	padding-left: 1.1rem;
 }
 
 .selah-formulaire__alerte a {
@@ -208,8 +230,8 @@
 
 .selah-formulaire__erreur {
 	margin: 0 0 0.4rem;
-	color: var(--sf-erreur);
 	font-size: 0.875rem;
+	color: var(--sf-erreur);
 }
 
 .selah-formulaire .a-une-erreur input,
@@ -223,6 +245,7 @@
 
 /* Confirmation. */
 .selah-formulaire--merci {
+	display: block;
 	border-color: var(--sf-succes);
 	text-align: center;
 }
@@ -232,7 +255,18 @@
 }
 
 .selah-formulaire__titre {
-	font-size: 1.25rem;
-	font-weight: 700;
+	margin-bottom: 0.4rem !important;
+	font-size: 1.375rem;
+	font-weight: 800;
 	color: var(--sf-succes);
+}
+
+@media (max-width: 560px) {
+	.selah-formulaire {
+		grid-template-columns: 1fr;
+	}
+
+	.selah-formulaire__choix span {
+		font-size: 0.875rem;
+	}
 }

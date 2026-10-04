@@ -5,30 +5,32 @@
  * Categories: selah
  * Inserter: no
  *
+ * Généré depuis la maquette « Streaming » ; modifiable dans l’éditeur.
+ *
  * @package Selah
  */
 
 ?>
-<!-- wp:paragraph {"className":"selah-numero","style":{"typography":{"fontWeight":"800"}},"fontSize":"titre"} -->
-<p class="selah-numero has-titre-font-size" style="font-weight:800">404</p>
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/chemise-wax.webp' ) ); ?>","alt":"Homme en chemise wax, de nuit dans une rue de Cotonou.","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.28},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page","layout":{"type":"default"}} -->
+<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page"><img class="wp-block-cover__image-background" alt="Homme en chemise wax, de nuit dans une rue de Cotonou." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/chemise-wax.webp' ) ); ?>" style="object-position:50% 28%" data-object-fit="cover" data-object-position="50% 28%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<p class="selah-surtitre">Erreur 404</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":1,"className":"selah-fil"} -->
-<h1 class="wp-block-heading selah-fil">Cette page ne nous va pas.</h1>
+<!-- wp:heading {"level":1,"className":"selah-affiche selah-affiche\u002d\u002dxl"} -->
+<h1 class="wp-block-heading selah-affiche selah-affiche--xl">Cette page<br>ne nous va <em>pas.</em></h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"textColor":"discret","fontSize":"sous-titre"} -->
-<p class="has-discret-color has-text-color has-sous-titre-font-size">Elle n’existe pas, ou plus. Essaie autre chose : tu trouveras sûrement ce qui te va.</p>
+<!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#e6e6e6"}},"fontSize":"chapo"} -->
+<p class="selah-chapo has-text-color has-chapo-font-size" style="color:#e6e6e6">Elle n’existe pas, ou plus. Essaie autre chose : tu trouveras sûrement ce qui te va.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--40)">
-	<!-- wp:button -->
-	<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/' ) ); ?>">Retour à l’accueil</a></div>
-	<!-- /wp:button -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"selah-fleche"} -->
+<div class="wp-block-button selah-fleche"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/' ) ); ?>">Retour à l’accueil</a></div>
+<!-- /wp:button -->
 
-	<!-- wp:button {"className":"is-style-outline"} -->
-	<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#selah-app">Ouvrir Selah</a></div>
-	<!-- /wp:button -->
-</div>
-<!-- /wp:buttons -->
+<!-- wp:button {"className":"is-style-verre"} -->
+<div class="wp-block-button is-style-verre"><a class="wp-block-button__link wp-element-button" href="#selah-app">Ouvrir Selah</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div></section>
+<!-- /wp:cover -->

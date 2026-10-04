@@ -3,177 +3,248 @@
  * Title: Page — Créateurs
  * Slug: selah/page-createurs
  * Categories: selah-pages
- * Keywords: créateurs, ateliers, marques
  * Post Types: page
  * Block Types: core/post-content
- * Viewport Width: 1400
+ * Viewport Width: 1440
+ *
+ * Généré depuis la maquette « Streaming » ; modifiable dans l’éditeur.
  *
  * @package Selah
  */
 
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
-	<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|60"}}}} -->
-	<div class="wp-block-columns alignwide are-vertically-aligned-center">
-		<!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
-		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%">
-			<!-- wp:paragraph {"className":"selah-surtitre","textColor":"discret","fontSize":"legende"} -->
-			<p class="selah-surtitre has-discret-color has-text-color has-legende-font-size">Pour les créateurs</p>
-			<!-- /wp:paragraph -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>","alt":"Une créatrice coud du wax à la machine dans son atelier, devant des rouleaux de tissus.","overlayColor":"noir","focalPoint":{"x":0.4,"y":0.5},"contentPosition":"bottom left","tagName":"section","align":"full","className":"selah-tete-page","layout":{"type":"default"}} -->
+<section class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left selah-tete-page"><img class="wp-block-cover__image-background" alt="Une créatrice coud du wax à la machine dans son atelier, devant des rouleaux de tissus." src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>" style="object-position:40% 50%" data-object-fit="cover" data-object-position="40% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<p class="selah-surtitre">Créateurs de Cotonou</p>
+<!-- /wp:paragraph -->
 
-			<!-- wp:heading {"level":1,"className":"selah-fil"} -->
-			<h1 class="wp-block-heading selah-fil">Vos créations, essayées avant d’être choisies.</h1>
-			<!-- /wp:heading -->
+<!-- wp:heading {"level":1,"className":"selah-affiche selah-affiche\u002d\u002dxl"} -->
+<h1 class="wp-block-heading selah-affiche selah-affiche--xl">Votre atelier,<br><em>à l’affiche.</em></h1>
+<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"textColor":"discret","fontSize":"sous-titre"} -->
-			<p class="has-discret-color has-text-color has-sous-titre-font-size">Selah met en vitrine les créateurs de Cotonou. Chaque visiteur voit vos pièces portées par son propre personnage, demande l’avis de ses amis et garde ce qui lui va.</p>
-			<!-- /wp:paragraph -->
+<!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#e6e6e6"}},"fontSize":"chapo"} -->
+<p class="selah-chapo has-text-color has-chapo-font-size" style="color:#e6e6e6">Sur Selah, vos pièces ne dorment pas sur un cintre. Chacun les voit portées par son propre personnage, puis les montre à ses amis.</p>
+<!-- /wp:paragraph -->
 
-			<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-			<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--40)">
-				<!-- wp:button -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#demande-acces">Rejoindre Selah</a></div>
-				<!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
-		</div>
-		<!-- /wp:column -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"selah-fleche"} -->
+<div class="wp-block-button selah-fleche"><a class="wp-block-button__link wp-element-button" href="#demande-acces">Rejoindre le showroom</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div></section>
+<!-- /wp:cover -->
 
-		<!-- wp:column {"verticalAlignment":"center"} -->
-		<div class="wp-block-column is-vertically-aligned-center">
-			<!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"center","className":"selah-cadre-encre"} -->
-			<figure class="wp-block-image aligncenter size-full selah-cadre-encre"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portant.svg' ) ); ?>" alt="Un portant d’atelier : chemise, robe aux bandes kanvô, boubou et pantalon."/></figure>
-			<!-- /wp:image -->
-		</div>
-		<!-- /wp:column -->
-	</div>
-	<!-- /wp:columns -->
-</div>
+<!-- wp:group {"tagName":"section","align":"full","className":"selah-section","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull selah-section"><!-- wp:group {"className":"selah-section__tete","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-section__tete"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<p class="selah-surtitre">Ce que Selah change</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
+<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Portées.<br>Partagées.<br>Choisies.</h2>
+<!-- /wp:heading --></div>
 <!-- /wp:group -->
 
-<!-- wp:pattern {"slug":"selah/bandeau-kanvo"} /-->
+<!-- wp:group {"className":"selah-cartes","layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"16rem"}} -->
+<div class="wp-block-group selah-cartes"><!-- wp:group {"className":"selah-carte","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-carte"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Portées, pas posées à plat</h3>
+<!-- /wp:heading -->
 
-<!-- wp:group {"align":"full","backgroundColor":"surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull has-surface-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
-	<!-- wp:heading {"align":"wide","className":"selah-fil"} -->
-	<h2 class="wp-block-heading alignwide selah-fil">Ce que Selah change pour vous.</h2>
-	<!-- /wp:heading -->
-
-	<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"16rem"}} -->
-	<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--40)">
-		<!-- wp:group {"className":"selah-carte","layout":{"type":"default"}} -->
-		<div class="wp-block-group selah-carte">
-			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">Vos pièces, portées</h3>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"textColor":"discret","fontSize":"secondaire"} -->
-			<p class="has-discret-color has-text-color has-secondaire-font-size">Chacun voit vos créations sur son propre personnage. Plus besoin d’imaginer le rendu à partir d’une photo à plat.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:group -->
-
-		<!-- wp:group {"className":"selah-carte","layout":{"type":"default"}} -->
-		<div class="wp-block-group selah-carte">
-			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">Partagées entre amis</h3>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"textColor":"discret","fontSize":"secondaire"} -->
-			<p class="has-discret-color has-text-color has-secondaire-font-size">Quand quelqu’un demande l’avis de ses proches, c’est votre pièce qui circule et qui se fait connaître.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:group -->
-
-		<!-- wp:group {"className":"selah-carte","layout":{"type":"default"}} -->
-		<div class="wp-block-group selah-carte">
-			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">Le savoir-faire d’ici</h3>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"textColor":"discret","fontSize":"secondaire"} -->
-			<p class="has-discret-color has-text-color has-secondaire-font-size">Selah est pensé pour les créateurs de Cotonou : leurs tissus, leurs coupes, leur façon de faire la mode.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:group -->
-	</div>
-	<!-- /wp:group -->
-</div>
+<!-- wp:paragraph {"textColor":"gris"} -->
+<p class="has-gris-color has-text-color">Vos créations prennent vie sur le personnage de chacun. Plus besoin d’imaginer le rendu à partir d’une photo à plat.</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
-	<!-- wp:heading {"align":"wide","className":"selah-fil"} -->
-	<h2 class="wp-block-heading alignwide selah-fil">Rejoindre Selah, en trois étapes.</h2>
-	<!-- /wp:heading -->
+<!-- wp:group {"className":"selah-carte","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-carte"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Partagées entre amis</h3>
+<!-- /wp:heading -->
 
-	<!-- wp:columns {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"},"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|50"}}}} -->
-	<div class="wp-block-columns alignwide" style="margin-top:var(--wp--preset--spacing--50)">
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:paragraph {"className":"selah-numero","fontSize":"titre","style":{"typography":{"fontWeight":"800"}}} -->
-			<p class="selah-numero has-titre-font-size" style="font-weight:800">01</p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">Faites une demande</h3>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"textColor":"discret"} -->
-			<p class="has-discret-color has-text-color">Remplissez le formulaire ci-dessous en indiquant le nom de votre marque ou de votre atelier.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
-
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:paragraph {"className":"selah-numero","fontSize":"titre","style":{"typography":{"fontWeight":"800"}}} -->
-			<p class="selah-numero has-titre-font-size" style="font-weight:800">02</p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">On fait connaissance</h3>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"textColor":"discret"} -->
-			<p class="has-discret-color has-text-color">L’équipe Selah vous contacte pour découvrir vos pièces et répondre à vos questions.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
-
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:paragraph {"className":"selah-numero","fontSize":"titre","style":{"typography":{"fontWeight":"800"}}} -->
-			<p class="selah-numero has-titre-font-size" style="font-weight:800">03</p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading">Vos pièces entrent au showroom</h3>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"textColor":"discret"} -->
-			<p class="has-discret-color has-text-color">Elles deviennent essayables par les personnages de toute la communauté Selah.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
-	</div>
-	<!-- /wp:columns -->
-</div>
+<!-- wp:paragraph {"textColor":"gris"} -->
+<p class="has-gris-color has-text-color">Quand quelqu’un demande l’avis de ses proches, c’est votre pièce qui circule et se fait connaître.</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"anchor":"demande-acces","align":"full","backgroundColor":"surface","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"600px"}} -->
-<div id="demande-acces" class="wp-block-group alignfull has-surface-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
-	<!-- wp:heading {"textAlign":"center","className":"selah-fil"} -->
-	<h2 class="wp-block-heading has-text-align-center selah-fil">Présentez-nous votre travail.</h2>
-	<!-- /wp:heading -->
+<!-- wp:group {"className":"selah-carte","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-carte"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Pensé pour Cotonou</h3>
+<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"align":"center","textColor":"discret"} -->
-	<p class="has-text-align-center has-discret-color has-text-color">Quelques lignes suffisent. Nous revenons vers vous rapidement.</p>
-	<!-- /wp:paragraph -->
+<!-- wp:paragraph {"textColor":"gris"} -->
+<p class="has-gris-color has-text-color">Wax, kanvô, bazin, brocart : vos tissus, vos coupes, votre façon de faire la mode.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
 
-	<!-- wp:shortcode -->
+<!-- wp:group {"align":"full","className":"selah-rangees","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull selah-rangees" style="margin-top:var(--wp--preset--spacing--60)"><!-- wp:group {"className":"selah-rangee","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-rangee"><!-- wp:group {"className":"selah-rangee__tete","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
+<div class="wp-block-group selah-rangee__tete"><!-- wp:heading -->
+<h2 class="wp-block-heading">Toutes les matières ont leur place</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"selah-indice"} -->
+<p class="selah-indice">Fais défiler</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"selah-defile","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group selah-defile"><!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-kanvo.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.3},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-kanvo.webp' ) ); ?>" style="object-position:50% 30%" data-object-fit="cover" data-object-position="50% 30%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<p class="selah-occasion__label">Tissage</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"selah-occasion__titre"} -->
+<p class="selah-occasion__titre">Kanvô</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.22},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>" style="object-position:50% 22%" data-object-fit="cover" data-object-position="50% 22%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<p class="selah-occasion__label">Imprimé</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"selah-occasion__titre"} -->
+<p class="selah-occasion__titre">Wax</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.4},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/boubou.webp' ) ); ?>" style="object-position:50% 40%" data-object-fit="cover" data-object-position="50% 40%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<p class="selah-occasion__label">Broderie</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"selah-occasion__titre"} -->
+<p class="selah-occasion__titre">Bazin</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-soiree.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.18},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-soiree.webp' ) ); ?>" style="object-position:50% 18%" data-object-fit="cover" data-object-position="50% 18%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<p class="selah-occasion__label">Soirée</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"selah-occasion__titre"} -->
+<p class="selah-occasion__titre">Brocart</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/sac-kanvo.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.45},"contentPosition":"bottom left","className":"selah-occasion","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left selah-occasion"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/sac-kanvo.webp' ) ); ?>" style="object-position:50% 45%" data-object-fit="cover" data-object-position="50% 45%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-occasion__label"} -->
+<p class="selah-occasion__label">Finitions</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"selah-occasion__titre"} -->
+<p class="selah-occasion__titre">Accessoires</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","className":"selah-section","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull selah-section"><!-- wp:group {"className":"selah-section__tete","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-section__tete"><!-- wp:paragraph {"className":"selah-surtitre"} -->
+<p class="selah-surtitre">Rejoindre Selah</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
+<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Trois étapes.<br>Pas une de plus.</h2>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"selah-episodes","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-episodes"><!-- wp:group {"className":"selah-ep","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-ep"><!-- wp:paragraph {"className":"selah-ep__num"} -->
+<p class="selah-ep__num">1</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.5},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>" style="object-position:50% 50%" data-object-fit="cover" data-object-position="50% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<p class="selah-ep__etiquette">Épisode 1</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"layout":{"type":"default"}} -->
+<div class="wp-block-group"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Faites une demande</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Remplissez le formulaire en bas de page, avec le nom de votre marque ou de votre atelier.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"selah-ep","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-ep"><!-- wp:paragraph {"className":"selah-ep__num"} -->
+<p class="selah-ep__num">2</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.4,"y":0.5},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-2","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-2"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/atelier.webp' ) ); ?>" style="object-position:40% 50%" data-object-fit="cover" data-object-position="40% 50%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<p class="selah-ep__etiquette">Épisode 2</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"layout":{"type":"default"}} -->
+<div class="wp-block-group"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">On fait connaissance</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>L’équipe Selah vous contacte pour découvrir vos pièces et répondre à vos questions.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"selah-ep","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-ep"><!-- wp:paragraph {"className":"selah-ep__num"} -->
+<p class="selah-ep__num">3</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-soiree.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.25},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-3","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-3"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-soiree.webp' ) ); ?>" style="object-position:50% 25%" data-object-fit="cover" data-object-position="50% 25%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<p class="selah-ep__etiquette">Épisode 3</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"layout":{"type":"default"}} -->
+<div class="wp-block-group"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Vos pièces entrent au showroom</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Elles deviennent essayables par les personnages de toute la communauté Selah.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>","overlayColor":"noir","tagName":"section","align":"full","className":"selah-appel","layout":{"type":"default"},"anchor":"demande-acces"} -->
+<section class="wp-block-cover alignfull selah-appel" id="demande-acces"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"selah-appel__grille","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-appel__grille"><!-- wp:group {"className":"selah-appel__texte","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-appel__texte"><!-- wp:paragraph {"className":"selah-surtitre selah-surtitre\u002d\u002dpastille"} -->
+<p class="selah-surtitre selah-surtitre--pastille">Démonstration privée</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"className":"selah-affiche","fontSize":"affiche"} -->
+<h2 class="wp-block-heading selah-affiche has-affiche-font-size">Présentez-nous<br>votre travail.</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#ececec"}},"fontSize":"chapo"} -->
+<p class="selah-chapo has-text-color has-chapo-font-size" style="color:#ececec">Quelques lignes suffisent. L’équipe Selah revient vers vous.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"selah-deja"} -->
+<p class="selah-deja">Tu as déjà ton code ? <a href="#selah-app">Entre dans Selah</a></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:shortcode -->
 [selah_demande_acces profil="createur" registre="vous"]
-	<!-- /wp:shortcode -->
-</div>
-<!-- /wp:group -->
+<!-- /wp:shortcode --></div>
+<!-- /wp:group --></div></section>
+<!-- /wp:cover -->

@@ -3,39 +3,38 @@
  * Title: Page — Demande d’accès
  * Slug: selah/page-demande-acces
  * Categories: selah-pages
- * Keywords: formulaire, code, accès, contact
  * Post Types: page
  * Block Types: core/post-content
- * Viewport Width: 1200
+ * Viewport Width: 1440
+ *
+ * Généré depuis la maquette « Streaming » ; modifiable dans l’éditeur.
  *
  * @package Selah
  */
 
 ?>
-<!-- wp:group {"anchor":"demande-acces","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"600px"}} -->
-<div id="demande-acces" class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--70)">
-	<!-- wp:group {"layout":{"type":"default"}} -->
-	<div class="wp-block-group">
-		<!-- wp:paragraph {"className":"selah-pastille","fontSize":"secondaire"} -->
-		<p class="selah-pastille has-secondaire-font-size">Démonstration privée</p>
-		<!-- /wp:paragraph -->
-	</div>
-	<!-- /wp:group -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>","overlayColor":"noir","tagName":"section","align":"full","className":"selah-appel","layout":{"type":"default"},"anchor":"demande-acces"} -->
+<section class="wp-block-cover alignfull selah-appel" id="demande-acces"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/texture-kanvo.webp' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"selah-appel__grille","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-appel__grille"><!-- wp:group {"className":"selah-appel__texte","layout":{"type":"default"}} -->
+<div class="wp-block-group selah-appel__texte"><!-- wp:paragraph {"className":"selah-surtitre selah-surtitre\u002d\u002dpastille"} -->
+<p class="selah-surtitre selah-surtitre--pastille">Démonstration privée</p>
+<!-- /wp:paragraph -->
 
-	<!-- wp:heading {"level":1,"className":"selah-fil"} -->
-	<h1 class="wp-block-heading selah-fil">Demande ton code d’accès.</h1>
-	<!-- /wp:heading -->
+<!-- wp:heading {"level":1,"className":"selah-affiche","fontSize":"affiche"} -->
+<h1 class="wp-block-heading selah-affiche has-affiche-font-size">Le rideau<br>se lève<br>avec un code.</h1>
+<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"textColor":"discret","fontSize":"sous-titre"} -->
-	<p class="has-discret-color has-text-color has-sous-titre-font-size">Selah s’ouvre petit à petit. Laisse-nous tes coordonnées : l’équipe te recontacte avec un code pour entrer dans le showroom.</p>
-	<!-- /wp:paragraph -->
+<!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#ececec"}},"fontSize":"chapo"} -->
+<p class="selah-chapo has-text-color has-chapo-font-size" style="color:#ececec">Selah ouvre ses portes petit à petit. Laisse ta demande : l’équipe revient vers toi avec un code pour entrer dans le showroom.</p>
+<!-- /wp:paragraph -->
 
-	<!-- wp:shortcode -->
-[selah_demande_acces]
-	<!-- /wp:shortcode -->
-
-	<!-- wp:paragraph {"textColor":"discret","fontSize":"secondaire"} -->
-	<p class="has-discret-color has-text-color has-secondaire-font-size">Tu as déjà un code ? <a href="#selah-app">Entre dans Selah</a>.</p>
-	<!-- /wp:paragraph -->
-</div>
+<!-- wp:paragraph {"className":"selah-deja"} -->
+<p class="selah-deja">Tu as déjà ton code ? <a href="#selah-app">Entre dans Selah</a></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
+
+<!-- wp:shortcode -->
+[selah_demande_acces]
+<!-- /wp:shortcode --></div>
+<!-- /wp:group --></div></section>
+<!-- /wp:cover -->

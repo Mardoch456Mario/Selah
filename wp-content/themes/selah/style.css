@@ -2,11 +2,11 @@
 Theme Name: Selah
 Theme URI: https://selah-ebon.vercel.app/
 Author: Équipe Selah
-Description: Thème vitrine de Selah, le showroom de mode où ton personnage essaie pour toi les pièces des créateurs de Cotonou. Direction « Noir sur blanc » : encre, blanc, et un fil safran rappel du kanvô.
+Description: Thème vitrine de Selah, le showroom de mode où ton personnage essaie pour toi les pièces des créateurs de Cotonou. Esprit plateforme de streaming : fond noir, grandes images, titres d'affiche, rangées de vignettes.
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 1.1.0
+Version: 2.0.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: selah
@@ -14,60 +14,57 @@ Tags: block-patterns, full-site-editing, one-column, custom-colors, editor-style
 */
 
 /*
- * L'essentiel du style vit dans theme.json. Ce fichier ne garde que ce que
- * theme.json ne sait pas exprimer : le fil safran, les cartes et la maquette.
+ * Couleurs, polices et tailles sont dans theme.json. Ce fichier met en scène
+ * les sections (classes « selah-… » posées sur les blocs depuis l'éditeur).
  */
 
 :root {
-	--selah-fil: 3px;
+	--selah-gouttiere: clamp(16px, 4vw, 64px);
+	--selah-section: clamp(72px, 9vw, 140px);
+	--selah-rayon: 6px;
+	--selah-entete: 84px;
+	--selah-noir: var(--wp--preset--color--noir, #070707);
+	--selah-safran: var(--wp--preset--color--safran, #f4a91f);
+}
+
+@media (max-width: 560px) {
+	:root {
+		--selah-entete: 72px;
+	}
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
 }
 
 ::selection {
-	background: var(--wp--preset--color--safran);
-	color: var(--wp--preset--color--encre);
+	background: var(--selah-safran);
+	color: var(--selah-noir);
 }
 
-:where(a, button, input, select, textarea, summary):focus-visible {
-	outline: 2px solid var(--wp--preset--color--encre);
-	outline-offset: 2px;
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: 3px solid var(--selah-safran);
+	outline-offset: 3px;
+	border-radius: 4px;
 }
 
-.has-encre-background-color :where(a, button, input, select, textarea, summary):focus-visible {
-	outline-color: var(--wp--preset--color--blanc);
+p,
+h1,
+h2,
+h3 {
+	text-wrap: pretty;
 }
 
-/*
- * En-tête collant. C'est l'enveloppe <header> de la partie de modèle qui colle :
- * .selah-entete a exactement sa hauteur et n'aurait aucune place pour coller.
- */
-.wp-site-blocks > header.wp-block-template-part {
-	position: sticky;
-	top: 0;
-	z-index: 50;
-}
+/* ------------------------------------------------------------------
+ * Mise en page générale
+ * ------------------------------------------------------------------ */
 
-@media (min-width: 601px) {
-	.admin-bar .wp-site-blocks > header.wp-block-template-part {
-		top: var(--wp-admin--admin-bar--height, 0px);
-	}
-}
-
-/*
- * Les ancres (#comment-ca-marche, #demande-acces) ne passent pas sous l'en-tête.
- * Pas de scroll-padding sur html : il ferait défiler la page dès qu'un élément
- * de l'en-tête collant reçoit le focus (à la fermeture du menu mobile, par exemple).
- */
-.wp-site-blocks [id] {
-	scroll-margin-top: 5.5rem;
-}
-
-@media (min-width: 601px) {
-	.admin-bar .wp-site-blocks [id] {
-		scroll-margin-top: calc(5.5rem + var(--wp-admin--admin-bar--height, 0px));
-	}
-}
-
-/* Pages courtes : le pied de page descend en bas de l'écran. */
+/* Les pages courtes gardent le pied de page en bas de l'écran. */
 .wp-site-blocks {
 	display: flex;
 	flex-direction: column;
@@ -79,192 +76,212 @@ Tags: block-patterns, full-site-editing, one-column, custom-colors, editor-style
 	flex: 1 0 auto;
 }
 
-@media (min-width: 601px) {
-	.admin-bar .wp-site-blocks {
-		min-height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
-	}
-}
-
-/*
- * Fond légèrement translucide comme dans l'app. Le flou est porté par un
- * pseudo-élément : un backdrop-filter sur .selah-entete enfermerait le menu
- * mobile (position: fixed) dans la hauteur de l'en-tête.
- */
-.selah-entete {
-	position: relative;
-	isolation: isolate;
-	border-bottom: 1px solid var(--wp--preset--color--trait);
-}
-
-.selah-entete::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	z-index: -1;
-	background: color-mix(in srgb, var(--wp--preset--color--blanc) 95%, transparent);
-	backdrop-filter: saturate(1.4) blur(10px);
-	-webkit-backdrop-filter: saturate(1.4) blur(10px);
-}
-
-/* Le pied de page touche la dernière section, sans liseré blanc. */
-.wp-site-blocks > footer.wp-block-template-part {
+.wp-site-blocks > * {
 	margin-block-start: 0;
 }
 
-/* Le mot-symbole « Selah ». */
-.selah-logo {
+/* Les ancres ne passent pas sous l'en-tête. */
+.wp-site-blocks [id] {
+	scroll-margin-top: calc(var(--selah-entete) + 0.5rem);
+}
+
+/* ------------------------------------------------------------------
+ * Typographie d'affiche
+ * ------------------------------------------------------------------ */
+
+.selah-surtitre {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.6rem;
-	text-decoration: none;
-}
-
-.selah-logo img {
-	display: block;
-}
-
-/* Le fil safran : un trait court sous un titre, rappel du kanvô. */
-.selah-fil {
-	position: relative;
-	padding-bottom: 0.9rem;
-}
-
-.selah-fil::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 3.5rem;
-	height: var(--selah-fil);
-	border-radius: 999px;
-	background: var(--wp--preset--color--safran);
-}
-
-.selah-fil.has-text-align-center::after {
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-/* Bandeau kanvô : rayures tissées, en séparateur pleine largeur. */
-.wp-block-separator.selah-kanvo {
-	height: 14px;
-	width: auto;
-	max-width: none;
-	border: 0;
-	opacity: 1;
-	background-color: var(--wp--preset--color--encre);
-	background-image: url("assets/images/kanvo.svg");
-	background-repeat: repeat-x;
-	background-size: auto 14px;
-	margin-block: 0 !important;
-}
-
-/* Surtitre en petites capitales. */
-.selah-surtitre {
-	text-transform: uppercase;
-	letter-spacing: 0.12em;
-	font-weight: 600;
-}
-
-/* Numéros d'étapes « 01 », « 02 », « 03 ». */
-.selah-numero {
-	font-variant-numeric: tabular-nums;
-	color: var(--wp--preset--color--safran);
-}
-
-/* Cartes : contour fin, coins arrondis, légère élévation au survol. */
-.selah-carte {
-	height: 100%;
-	transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.selah-carte:hover {
-	border-color: var(--wp--preset--color--encre) !important;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.selah-carte:hover {
-		transform: translateY(-2px);
-	}
-}
-
-/* Maquette de téléphone de l'accueil. */
-.selah-maquette img {
-	width: 100%;
-	max-width: 360px;
-	height: auto;
-	margin-inline: auto;
-	filter: drop-shadow(0 30px 40px rgb(11 11 12 / 0.18));
-}
-
-/* FAQ : blocs « Détails » présentés en accordéon. */
-.wp-block-details.selah-question {
-	border-bottom: 1px solid var(--wp--preset--color--trait);
-	padding-block: 1.1rem;
-}
-
-.wp-block-details.selah-question summary {
-	cursor: pointer;
-	font-weight: 600;
-	font-size: var(--wp--preset--font-size--sous-titre);
+	gap: 10px;
+	margin: 0;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
 	line-height: 1.3;
-	list-style: none;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 1rem;
+	text-transform: uppercase;
+	color: var(--selah-safran);
 }
 
-.wp-block-details.selah-question summary::-webkit-details-marker {
-	display: none;
-}
-
-.wp-block-details.selah-question summary::after {
-	content: "+";
+.selah-surtitre--pastille::before {
+	content: "";
 	flex: none;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--selah-safran);
+	box-shadow: 0 0 0 4px rgb(244 169 31 / 0.22);
+}
+
+.selah-affiche {
+	font-family: var(--wp--preset--font-family--anton);
+	font-weight: 400;
+	letter-spacing: 0.005em;
+	line-height: 1.12;
+	text-transform: uppercase;
+	text-wrap: balance;
+}
+
+.selah-affiche em {
+	font-style: normal;
+	color: var(--selah-safran);
+}
+
+.selah-affiche--xl {
+	font-size: var(--wp--preset--font-size--affiche-xl);
+	line-height: 0.9;
+}
+
+.selah-chapo {
+	max-width: 34em;
+}
+
+/* ------------------------------------------------------------------
+ * Boutons
+ * ------------------------------------------------------------------ */
+
+.wp-block-buttons {
+	gap: 12px;
+}
+
+.wp-block-button .wp-element-button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 1.3em;
-	height: 1.3em;
-	font-weight: 400;
-	transform-origin: center;
-	transition: transform 0.2s ease;
+	gap: 10px;
+	min-height: 52px;
+	white-space: nowrap;
+	transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.wp-block-details.selah-question[open] summary::after {
-	transform: rotate(45deg);
-}
-
-.wp-block-details.selah-question > :not(summary) {
-	color: var(--wp--preset--color--discret);
-	margin-top: 0.75rem;
-}
-
-/* Pastille « Démonstration privée ». */
-.selah-pastille {
-	display: inline-flex;
-	align-items: flex-start;
-	gap: 0.5rem;
-	border: 1px solid var(--wp--preset--color--trait);
-	border-radius: 999px;
-	padding: 0.35rem 0.9rem;
-}
-
-.selah-pastille::before {
+/* Flèche après le texte. */
+.wp-block-button.selah-fleche .wp-element-button::after {
 	content: "";
-	flex: none;
-	margin-top: 0.45em;
-	width: 0.5rem;
-	height: 0.5rem;
-	border-radius: 999px;
-	background: var(--wp--preset--color--safran);
+	width: 20px;
+	height: 20px;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-/* Menu mobile ouvert : grands liens alignés à gauche, comme dans l'app. */
+/* Bouton « verre » : translucide sur les images. */
+.wp-block-button.is-style-verre .wp-element-button {
+	background: rgb(255 255 255 / 0.16);
+	color: var(--wp--preset--color--blanc);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+.wp-block-button.is-style-verre .wp-element-button:hover,
+.wp-block-button.is-style-verre .wp-element-button:focus {
+	background: rgb(255 255 255 / 0.26);
+	color: var(--wp--preset--color--blanc);
+}
+
+/* Bouton « contour » : trait blanc, se remplit au survol. */
+.wp-block-buttons > .wp-block-button.is-style-outline > .wp-block-button__link {
+	background: transparent;
+	color: var(--wp--preset--color--blanc);
+	border: 0;
+	box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.7);
+	padding: 0.95rem 1.75rem;
+}
+
+.wp-block-buttons > .wp-block-button.is-style-outline > .wp-block-button__link:hover,
+.wp-block-buttons > .wp-block-button.is-style-outline > .wp-block-button__link:focus {
+	background: var(--wp--preset--color--blanc);
+	color: var(--selah-noir);
+}
+
+/* Petit bouton (en-tête). */
+.wp-block-buttons > .wp-block-button.selah-bouton-petit > .wp-block-button__link {
+	min-height: 40px;
+	padding: 0.6rem 1.15rem;
+	font-size: 0.875rem;
+}
+
+/* Lien avec flèche. */
+.selah-lien-fleche a {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 4px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.selah-lien-fleche a::after {
+	content: "→";
+	transition: transform 0.15s ease;
+}
+
+.selah-lien-fleche a:hover::after {
+	transform: translateX(4px);
+}
+
+@media (max-width: 560px) {
+	.selah-ouverture .wp-block-buttons > .wp-block-button {
+		flex: 1 1 100%;
+	}
+
+	.selah-ouverture .wp-block-buttons > .wp-block-button > .wp-block-button__link {
+		width: 100%;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * En-tête, posé sur l'image d'ouverture et collant au défilement
+ * ------------------------------------------------------------------ */
+
+.wp-site-blocks > header.wp-block-template-part {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	height: var(--selah-entete);
+	margin-bottom: calc(-1 * var(--selah-entete));
+}
+
+@media (min-width: 601px) {
+	.admin-bar .wp-site-blocks > header.wp-block-template-part {
+		top: var(--wp-admin--admin-bar--height, 0px);
+	}
+}
+
+.selah-entete {
+	height: var(--selah-entete);
+	padding: 0 var(--selah-gouttiere) !important;
+	background: linear-gradient(180deg, rgb(7 7 7 / 0.88) 0%, rgb(7 7 7 / 0.55) 55%, rgb(7 7 7 / 0) 100%);
+}
+
+.selah-entete > .wp-block-group {
+	height: 100%;
+}
+
+/* Le point safran du logo « Selah. ». */
+.selah-entete .wp-block-site-title a::after,
+.selah-logo::after {
+	content: "";
+	display: inline-block;
+	width: 0.22em;
+	height: 0.22em;
+	margin-left: 0.06em;
+	border-radius: 50%;
+	background: var(--selah-safran);
+}
+
+.selah-entete .wp-block-navigation a {
+	color: rgb(255 255 255 / 0.82);
+}
+
+.selah-entete .wp-block-navigation a:hover {
+	color: var(--wp--preset--color--blanc);
+}
+
+/* Menu mobile ouvert : plein écran noir, grands liens. */
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open {
 	--navigation-layout-justification-setting: flex-start;
-	padding: 1.25rem 1.5rem;
+	background: var(--selah-noir) !important;
+	color: var(--wp--preset--color--blanc) !important;
+	padding: 1.25rem var(--selah-gouttiere);
 }
 
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
@@ -274,25 +291,41 @@ Tags: block-patterns, full-site-editing, one-column, custom-colors, editor-style
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
 	--navigation-layout-justification-setting: flex-start;
 	align-items: flex-start;
-	gap: 1.1rem;
+	gap: 1rem;
 }
 
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
-	font-size: var(--wp--preset--font-size--titre);
-	font-weight: 700;
-	letter-spacing: -0.025em;
+	font-family: var(--wp--preset--font-family--anton);
+	font-size: clamp(2.5rem, 12vw, 3.5rem);
+	line-height: 1.05;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--blanc);
 }
 
-/* Navigation mobile : le bouton du menu en pilule. */
 .wp-block-navigation__responsive-container-open,
 .wp-block-navigation__responsive-container-close {
-	border-radius: 999px;
-	padding: 0.5rem;
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgb(255 255 255 / 0.12);
+}
+
+@media (min-width: 600px) {
+	.wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: none;
+	}
 }
 
 @media (max-width: 781px) {
 	.selah-masquer-mobile {
 		display: none !important;
+	}
+
+	/* Sans le bouton « J'ai un code », le menu se range à droite. */
+	.selah-entete .wp-block-navigation {
+		margin-left: auto;
 	}
 }
 
@@ -302,99 +335,892 @@ Tags: block-patterns, full-site-editing, one-column, custom-colors, editor-style
 	}
 }
 
-/* Petits écrans : les boutons s'empilent en pleine largeur. */
-@media (max-width: 480px) {
-	.wp-block-buttons > .wp-block-button {
-		flex: 1 1 100%;
-	}
+/* ------------------------------------------------------------------
+ * Ouverture : affiche plein écran
+ * ------------------------------------------------------------------ */
 
-	.wp-block-buttons > .wp-block-button > .wp-block-button__link {
-		display: block;
-		width: 100%;
-		text-align: center;
-	}
+.wp-block-cover.selah-ouverture {
+	min-height: max(640px, 100svh);
+	align-items: flex-end;
+	padding: 140px var(--selah-gouttiere) clamp(140px, 13vw, 210px);
 }
 
-/* Listes de liens sans puces (pied de page). */
-.selah-liste-simple {
+.wp-block-cover.selah-ouverture > .wp-block-cover__background {
+	opacity: 1 !important;
+	background:
+		linear-gradient(90deg, rgb(7 7 7 / 0.94) 0%, rgb(7 7 7 / 0.72) 30%, rgb(7 7 7 / 0.1) 62%, rgb(7 7 7 / 0) 100%),
+		linear-gradient(0deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.6) 22%, rgb(7 7 7 / 0) 50%) !important;
+}
+
+.wp-block-cover.selah-ouverture > .wp-block-cover__inner-container {
+	display: grid;
+	gap: 22px;
+	max-width: 720px;
+	margin: 0;
+}
+
+.wp-block-cover.selah-ouverture > .wp-block-cover__inner-container > * {
+	margin: 0;
+}
+
+.selah-ouverture__texte {
+	max-width: 31em;
+	color: #e6e6e6;
+}
+
+/* Puces « Showroom de mode · Sur ton téléphone… ». */
+.selah-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
 	list-style: none;
-	padding-left: 0;
-	line-height: 2;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
 }
 
-.selah-liste-simple a {
-	text-decoration: none;
+.selah-meta li {
+	padding: 5px 10px;
+	border: 1px solid rgb(255 255 255 / 0.38);
+	border-radius: 4px;
+	line-height: 1.2;
+	background: rgb(7 7 7 / 0.35);
 }
 
-.selah-liste-simple a:hover {
-	text-decoration: underline;
+@media (max-width: 560px) {
+	.wp-block-cover.selah-ouverture {
+		min-height: 100svh;
+		padding-bottom: 72px;
+	}
+
+	.wp-block-cover.selah-ouverture > .wp-block-cover__image-background {
+		object-position: 50% 30% !important;
+	}
+
+	.wp-block-cover.selah-ouverture > .wp-block-cover__background {
+		background: linear-gradient(0deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.9) 34%, rgb(7 7 7 / 0.25) 62%, rgb(7 7 7 / 0.1) 100%) !important;
+	}
+
+	.wp-block-cover.selah-ouverture > .wp-block-cover__inner-container {
+		gap: 18px;
+	}
 }
 
-/* Séparateur discret sur fond encre. */
-.wp-block-separator.selah-separateur-sombre {
-	border: 0;
-	border-top: 1px solid rgb(255 255 255 / 0.15);
-	background: none;
-	margin-block: var(--wp--preset--spacing--50) var(--wp--preset--spacing--30);
+/* En-tête de page intérieure : même affiche, en plus court. */
+.wp-block-cover.selah-tete-page {
+	min-height: clamp(420px, 56vw, 640px);
+	align-items: flex-end;
+	padding: 140px var(--selah-gouttiere) clamp(48px, 6vw, 88px);
 }
 
-/* Boutons sur fond encre : blanc plein, ou contour blanc. */
-.has-encre-background-color .wp-block-button .wp-element-button:hover,
-.has-encre-background-color .wp-block-button .wp-element-button:focus {
-	background-color: var(--wp--preset--color--trait) !important;
-	color: var(--wp--preset--color--encre) !important;
+.wp-block-cover.selah-tete-page > .wp-block-cover__background {
+	opacity: 1 !important;
+	background:
+		linear-gradient(90deg, rgb(7 7 7 / 0.92) 0%, rgb(7 7 7 / 0.6) 40%, rgb(7 7 7 / 0.05) 75%),
+		linear-gradient(0deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.5) 30%, rgb(7 7 7 / 0) 60%) !important;
 }
 
-.has-encre-background-color .wp-block-button.is-style-outline .wp-element-button {
+.wp-block-cover.selah-tete-page > .wp-block-cover__inner-container {
+	display: grid;
+	gap: 18px;
+	max-width: 820px;
+	margin: 0;
+}
+
+.wp-block-cover.selah-tete-page > .wp-block-cover__inner-container > * {
+	margin: 0;
+}
+
+/* Tête de page sans image (confidentialité, journal…). */
+.selah-tete-simple {
+	padding-top: calc(var(--selah-entete) + clamp(48px, 7vw, 110px)) !important;
+}
+
+/* ------------------------------------------------------------------
+ * Rangées défilantes de vignettes
+ * ------------------------------------------------------------------ */
+
+.selah-rangees {
+	position: relative;
+	z-index: 2;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: clamp(48px, 5vw, 72px);
+}
+
+.selah-rangees--sur-ouverture {
+	margin-top: clamp(-150px, -9vw, -60px) !important;
+}
+
+.selah-rangee {
+	display: block;
+}
+
+.selah-rangee__tete {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 0 var(--selah-gouttiere);
+	margin-bottom: 14px;
+}
+
+.selah-rangee__tete h2 {
+	margin: 0;
+	font-size: clamp(1.3rem, 0.95rem + 1vw, 1.75rem);
+	font-weight: 800;
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+}
+
+.selah-indice {
+	margin: 0;
+	white-space: nowrap;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--wp--preset--color--gris);
+}
+
+.selah-indice::after {
+	content: " →";
+}
+
+.selah-defile {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	gap: clamp(10px, 1.2vw, 18px) !important;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	padding: 6px var(--selah-gouttiere) 18px !important;
+	scroll-padding-inline: var(--selah-gouttiere);
+	scrollbar-width: thin;
+	scrollbar-color: #3a3a3a transparent;
+}
+
+.selah-defile > * {
+	flex: none;
+	margin: 0 !important;
+	scroll-snap-align: start;
+}
+
+/* Vignettes portrait, légende en surimpression. */
+.wp-block-cover.selah-vignette {
+	width: clamp(156px, 16vw, 232px);
+	min-height: 0;
+	aspect-ratio: 2 / 3;
+	padding: 0 14px 14px;
+	align-items: flex-end;
+	border-radius: var(--selah-rayon);
+	overflow: hidden;
+	box-shadow: -14px 0 30px rgb(0 0 0 / 0.7);
+}
+
+.wp-block-cover.selah-vignette > .wp-block-cover__background {
+	opacity: 1 !important;
+	background: linear-gradient(0deg, rgb(0 0 0 / 0.92) 0%, rgb(0 0 0 / 0.55) 24%, rgb(0 0 0 / 0) 46%) !important;
+}
+
+.wp-block-cover.selah-vignette > .wp-block-cover__image-background,
+.wp-block-cover.selah-occasion > .wp-block-cover__image-background {
+	transition: transform 0.4s ease;
+}
+
+.wp-block-cover.selah-vignette:hover > .wp-block-cover__image-background,
+.wp-block-cover.selah-occasion:hover > .wp-block-cover__image-background {
+	transform: scale(1.04);
+}
+
+.wp-block-cover.selah-vignette > .wp-block-cover__inner-container,
+.wp-block-cover.selah-occasion > .wp-block-cover__inner-container {
+	display: grid;
+	gap: 3px;
+}
+
+.wp-block-cover.selah-vignette > .wp-block-cover__inner-container > *,
+.wp-block-cover.selah-occasion > .wp-block-cover__inner-container > * {
+	margin: 0;
+}
+
+.selah-vignette__titre {
+	font-size: clamp(1rem, 0.85rem + 0.45vw, 1.125rem);
+	font-weight: 800;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.selah-vignette__texte {
+	font-size: 0.8125rem;
+	line-height: 1.35;
+	color: #d6d6d6;
+}
+
+/* Rangée « top » : numéros géants détourés. */
+.selah-top {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	align-items: flex-end !important;
+	gap: 0 !important;
+	padding-left: 4px;
+}
+
+.selah-top__num {
+	position: relative;
+	z-index: 0;
+	margin: 0 -0.07em 0.052em 0 !important;
+	font-family: var(--wp--preset--font-family--anton);
+	font-size: clamp(210px, 26vw, 380px);
+	line-height: 0.74;
+	letter-spacing: -0.04em;
+	color: var(--selah-noir);
+	-webkit-text-stroke: 2.5px rgb(255 255 255 / 0.7);
+	user-select: none;
+}
+
+.selah-top > .wp-block-cover {
+	z-index: 1;
+}
+
+/* Vignettes paysage « occasions ». */
+.wp-block-cover.selah-occasion {
+	width: clamp(270px, 27vw, 400px);
+	min-height: 0;
+	aspect-ratio: 16 / 10;
+	padding: 0 18px 16px;
+	align-items: flex-end;
+	border-radius: var(--selah-rayon);
+	overflow: hidden;
+}
+
+.wp-block-cover.selah-occasion > .wp-block-cover__background {
+	opacity: 1 !important;
+	background: linear-gradient(0deg, rgb(0 0 0 / 0.88) 0%, rgb(0 0 0 / 0.35) 42%, rgb(0 0 0 / 0) 70%) !important;
+}
+
+.selah-occasion__label {
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--selah-safran);
+}
+
+.selah-occasion__titre {
+	font-family: var(--wp--preset--font-family--anton);
+	font-size: clamp(1.625rem, 1rem + 1.6vw, 2.25rem);
+	line-height: 0.95;
+	text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+	.selah-rangees--sur-ouverture {
+		margin-top: 8px !important;
+	}
+
+	.selah-indice {
+		display: none;
+	}
+
+	.selah-top__num {
+		font-size: 230px;
+		-webkit-text-stroke-width: 2px;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * Comment ça marche : trois épisodes
+ * ------------------------------------------------------------------ */
+
+.selah-section {
+	padding-top: var(--selah-section) !important;
+	padding-right: var(--selah-gouttiere) !important;
+	padding-left: var(--selah-gouttiere) !important;
+}
+
+.selah-section__tete {
+	display: grid;
+	gap: 18px;
+	max-width: 1100px;
+	margin-bottom: clamp(36px, 4vw, 56px);
+}
+
+.selah-section__tete > * {
+	margin: 0;
+}
+
+.selah-episodes {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid var(--wp--preset--color--trait);
+}
+
+.selah-ep {
+	display: grid !important;
+	grid-template-columns: clamp(70px, 8vw, 130px) minmax(0, 1.05fr) minmax(0, 1fr);
+	gap: 0 clamp(20px, 3.4vw, 56px) !important;
+	align-items: center;
+	padding: clamp(24px, 2.8vw, 40px) 0;
+	border-bottom: 1px solid var(--wp--preset--color--trait);
+}
+
+.selah-ep > * {
+	margin: 0 !important;
+}
+
+.selah-ep__num {
+	font-family: var(--wp--preset--font-family--anton);
+	font-size: clamp(80px, 9vw, 150px);
+	line-height: 0.8;
+	color: var(--selah-noir);
+	-webkit-text-stroke: 2px rgb(255 255 255 / 0.6);
+}
+
+.wp-block-cover.selah-ep__vignette {
+	min-height: 0;
+	aspect-ratio: 16 / 9;
+	padding: 10px;
+	align-items: flex-start;
+	border-radius: var(--selah-rayon);
+	overflow: hidden;
+}
+
+.wp-block-cover.selah-ep__vignette > .wp-block-cover__background {
+	opacity: 0 !important;
+}
+
+/* Barre de lecture : piste blanche, progression safran. */
+.wp-block-cover.selah-ep__vignette::before,
+.wp-block-cover.selah-ep__vignette::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+	height: 4px;
+}
+
+.wp-block-cover.selah-ep__vignette::before {
+	right: 0;
+	background: rgb(255 255 255 / 0.22);
+}
+
+.wp-block-cover.selah-ep__vignette::after {
+	width: 33%;
+	background: var(--selah-safran);
+}
+
+.wp-block-cover.selah-ep__vignette.selah-progres-2::after {
+	width: 66%;
+}
+
+.wp-block-cover.selah-ep__vignette.selah-progres-3::after {
+	width: 100%;
+}
+
+.selah-ep__etiquette {
+	display: inline-block;
+	margin: 0;
+	padding: 6px 10px;
+	border-radius: 4px;
+	background: rgb(7 7 7 / 0.72);
+	font-size: 0.75rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.selah-ep h3 {
+	margin: 0 0 14px;
+	font-size: clamp(1.625rem, 1rem + 2vw, 2.75rem);
+	font-weight: 800;
+	letter-spacing: -0.025em;
+	line-height: 1.05;
+}
+
+.selah-ep p:not(.selah-ep__num):not(.selah-ep__etiquette) {
+	max-width: 26em;
+	margin: 0;
+	font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+	color: var(--wp--preset--color--gris);
+}
+
+@media (max-width: 860px) {
+	.selah-ep {
+		grid-template-columns: 1fr;
+		gap: 14px !important;
+	}
+
+	.selah-ep__num {
+		display: none;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * Plein cadre (entre amis)
+ * ------------------------------------------------------------------ */
+
+.wp-block-cover.selah-plein-cadre {
+	min-height: clamp(560px, 62vw, 900px);
+	margin-top: clamp(24px, 4vw, 64px) !important;
+	align-items: flex-end;
+	padding: 0 var(--selah-gouttiere) clamp(48px, 6vw, 96px);
+}
+
+.wp-block-cover.selah-plein-cadre > .wp-block-cover__background {
+	opacity: 1 !important;
+	background:
+		linear-gradient(180deg, var(--selah-noir) 0%, rgb(7 7 7 / 0) 18%),
+		linear-gradient(0deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.82) 26%, rgb(7 7 7 / 0.2) 55%, rgb(7 7 7 / 0) 70%) !important;
+}
+
+.wp-block-cover.selah-plein-cadre > .wp-block-cover__inner-container {
+	display: grid;
+	gap: 20px;
+	max-width: 900px;
+	margin: 0;
+}
+
+.wp-block-cover.selah-plein-cadre > .wp-block-cover__inner-container > * {
+	margin: 0;
+}
+
+@media (max-width: 560px) {
+	.wp-block-cover.selah-plein-cadre {
+		min-height: 600px;
+	}
+
+	.wp-block-cover.selah-plein-cadre > .wp-block-cover__image-background {
+		height: 72%;
+		object-position: 52% 20% !important;
+	}
+
+	.wp-block-cover.selah-plein-cadre > .wp-block-cover__background {
+		background: linear-gradient(0deg, var(--selah-noir) 0%, var(--selah-noir) 34%, rgb(7 7 7 / 0) 72%) !important;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * Carte « à l'affiche » (créateurs)
+ * ------------------------------------------------------------------ */
+
+.selah-carte-affiche {
+	display: grid !important;
+	grid-template-columns: 1.15fr 1fr;
+	align-items: stretch;
+	gap: 0 !important;
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--trait);
+	border-radius: 14px;
+	background: var(--wp--preset--color--noir-2);
+}
+
+.selah-carte-affiche > * {
+	margin: 0 !important;
+}
+
+.selah-carte-affiche__img {
+	position: relative;
+	min-height: 560px;
+}
+
+.selah-carte-affiche__img img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100% !important;
+	object-fit: cover;
+	object-position: 40% 50%;
+}
+
+.selah-carte-affiche__img::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, rgb(17 17 17 / 0) 60%, var(--wp--preset--color--noir-2) 100%);
+}
+
+.selah-carte-affiche__texte {
+	display: grid !important;
+	gap: 22px !important;
+	align-content: center;
+	padding: clamp(32px, 4vw, 64px);
+}
+
+.selah-carte-affiche__texte > * {
+	margin: 0 !important;
+}
+
+.selah-carte-affiche__texte .selah-affiche {
+	font-size: clamp(2.75rem, 5.4vw, 5.5rem);
+}
+
+/* Liste d'atouts à icônes. */
+.selah-atouts {
+	display: grid;
+	margin: 6px 0 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid var(--wp--preset--color--trait);
+}
+
+.selah-atouts li {
+	position: relative;
+	padding: 16px 0 16px 48px;
+	border-bottom: 1px solid var(--wp--preset--color--trait);
+	font-size: 0.97rem;
+	color: var(--wp--preset--color--gris);
+}
+
+.selah-atouts li strong {
+	display: block;
+	font-size: 1.0625rem;
+	font-weight: 800;
 	color: var(--wp--preset--color--blanc);
-	border-color: rgb(255 255 255 / 0.4);
 }
 
-.has-encre-background-color .wp-block-button.is-style-outline .wp-element-button:hover,
-.has-encre-background-color .wp-block-button.is-style-outline .wp-element-button:focus {
-	background-color: var(--wp--preset--color--blanc) !important;
-	color: var(--wp--preset--color--encre) !important;
+.selah-atouts li::before {
+	content: "";
+	position: absolute;
+	top: 18px;
+	left: 0;
+	width: 26px;
+	height: 26px;
+	background: var(--selah-safran);
+	-webkit-mask: var(--selah-icone) center / contain no-repeat;
+	mask: var(--selah-icone) center / contain no-repeat;
 }
 
-/* Bouton contour : même taille que le bouton plein, trait fin. */
-.wp-block-buttons > .wp-block-button.is-style-outline > .wp-block-button__link {
-	padding: 0.8rem 1.6rem;
-	border-width: 1px;
+.selah-atouts li:nth-child(3n + 1) {
+	--selah-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3 4 6l2 4 2-1v12h8V9l2 1 2-4-4-3h-2a2 2 0 0 1-4 0Z'/%3E%3C/svg%3E");
 }
 
-/* Bouton contour sur fond clair : se remplit d'encre au survol. */
-.wp-block-button.is-style-outline .wp-element-button:hover,
-.wp-block-button.is-style-outline .wp-element-button:focus {
-	background-color: var(--wp--preset--color--encre);
-	border-color: var(--wp--preset--color--encre);
-	color: var(--wp--preset--color--blanc);
+.selah-atouts li:nth-child(3n + 2) {
+	--selah-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cpath d='m8.6 13.5 6.8 4M15.4 6.5l-6.8 4'/%3E%3C/svg%3E");
 }
 
-/* Fin d'article : pas de groupe vide quand il n'y a ni article précédent ni suivant. */
-.selah-nav-articles:not(:has(a)) {
+.selah-atouts li:nth-child(3n) {
+	--selah-icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 1080px) {
+	.selah-carte-affiche {
+		grid-template-columns: 1fr;
+	}
+
+	.selah-carte-affiche__img {
+		min-height: 0;
+		aspect-ratio: 16 / 10;
+	}
+
+	.selah-carte-affiche__img::after {
+		background: linear-gradient(180deg, rgb(17 17 17 / 0) 55%, var(--wp--preset--color--noir-2) 100%);
+	}
+}
+
+@media (max-width: 560px) {
+	.selah-carte-affiche {
+		margin-inline: calc(-1 * var(--selah-gouttiere)) !important;
+		border-inline: 0;
+		border-radius: 0;
+	}
+
+	.selah-carte-affiche__texte {
+		padding: 28px var(--selah-gouttiere) 40px;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * Questions fréquentes
+ * ------------------------------------------------------------------ */
+
+.selah-questions {
+	display: grid !important;
+	grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+	gap: clamp(28px, 5vw, 96px) !important;
+	align-items: start;
+}
+
+.selah-questions > * {
+	margin: 0 !important;
+}
+
+.selah-questions__tete {
+	position: sticky;
+	top: calc(var(--selah-entete) + 16px);
+	display: grid !important;
+	gap: 18px !important;
+}
+
+.selah-questions__tete > * {
+	margin: 0 !important;
+}
+
+.selah-faq {
+	display: grid !important;
+	gap: 8px !important;
+}
+
+.selah-faq > * {
+	margin: 0 !important;
+}
+
+.wp-block-details.selah-question {
+	border: 1px solid var(--wp--preset--color--trait);
+	border-radius: 8px;
+	background: var(--wp--preset--color--noir-2);
+}
+
+.wp-block-details.selah-question summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 22px 24px;
+	cursor: pointer;
+	list-style: none;
+	font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.wp-block-details.selah-question summary::-webkit-details-marker {
 	display: none;
 }
 
-/* Date · catégorie d'un article : le point à égale distance des deux. */
-.wp-block-post-terms__prefix {
-	margin-inline-end: 0.4rem;
+.wp-block-details.selah-question summary::after {
+	content: "";
+	flex: none;
+	width: 22px;
+	height: 22px;
+	background: var(--selah-safran);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+	transition: transform 0.2s ease;
 }
 
-/* Cartes des grilles. */
+.wp-block-details.selah-question[open] summary::after {
+	transform: rotate(180deg);
+}
+
+.wp-block-details.selah-question > :not(summary) {
+	max-width: 38em;
+	margin: 0;
+	padding: 0 24px 24px;
+	color: var(--wp--preset--color--gris);
+}
+
+@media (max-width: 1080px) {
+	.selah-questions {
+		grid-template-columns: 1fr;
+	}
+
+	.selah-questions__tete {
+		position: static;
+	}
+}
+
+@media (max-width: 560px) {
+	.wp-block-details.selah-question summary {
+		padding: 18px;
+	}
+
+	.wp-block-details.selah-question > :not(summary) {
+		padding: 0 18px 20px;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * Appel final : demande de code
+ * ------------------------------------------------------------------ */
+
+.wp-block-cover.selah-appel {
+	min-height: 0;
+	margin-top: clamp(40px, 5vw, 80px) !important;
+	padding: clamp(80px, 9vw, 140px) var(--selah-gouttiere);
+	align-items: center;
+}
+
+.wp-block-cover.selah-appel > .wp-block-cover__background {
+	opacity: 1 !important;
+	background:
+		linear-gradient(180deg, var(--selah-noir) 0%, rgb(7 7 7 / 0.3) 22%, rgb(7 7 7 / 0.3) 78%, var(--selah-noir) 100%),
+		linear-gradient(90deg, rgb(7 7 7 / 0.82) 0%, rgb(7 7 7 / 0.55) 45%, rgb(7 7 7 / 0.15) 100%) !important;
+}
+
+.wp-block-cover.selah-appel > .wp-block-cover__inner-container {
+	max-width: none;
+	width: 100%;
+}
+
+.selah-appel__grille {
+	display: grid !important;
+	grid-template-columns: 1fr minmax(0, 560px);
+	gap: clamp(36px, 6vw, 110px) !important;
+	align-items: center;
+}
+
+.selah-appel__grille > * {
+	margin: 0 !important;
+}
+
+.selah-appel__texte {
+	display: grid !important;
+	gap: 22px !important;
+}
+
+.selah-appel__texte > * {
+	margin: 0 !important;
+}
+
+.selah-appel__texte .selah-affiche {
+	font-size: clamp(3.375rem, 7.4vw, 7.75rem);
+}
+
+@media (max-width: 560px) {
+	.selah-appel__texte .selah-affiche {
+		font-size: 4.125rem;
+	}
+}
+
+.selah-deja a {
+	color: var(--selah-safran);
+	font-weight: 700;
+	text-underline-offset: 4px;
+}
+
+@media (max-width: 1080px) {
+	.selah-appel__grille {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ------------------------------------------------------------------
+ * Contenu courant (pages, articles)
+ * ------------------------------------------------------------------ */
+
+.selah-prose {
+	color: #dcdcdc;
+}
+
+.selah-prose h2 {
+	margin-top: 2.2em;
+	font-size: var(--wp--preset--font-size--sous-titre);
+	color: var(--wp--preset--color--blanc);
+}
+
+.selah-prose a {
+	color: var(--selah-safran);
+}
+
+/* Cartes (grilles de la page Créateurs, du journal…). */
 .selah-carte {
-	background: var(--wp--preset--color--blanc);
+	height: 100%;
+	padding: clamp(22px, 2.5vw, 32px);
 	border: 1px solid var(--wp--preset--color--trait);
-	border-radius: 1.25rem;
-	padding: var(--wp--preset--spacing--40);
+	border-radius: 14px;
+	background: var(--wp--preset--color--noir-2);
+}
+
+.selah-carte > * {
+	margin-block: 0;
 }
 
 .selah-carte > * + * {
 	margin-top: 0.6rem;
 }
 
-/* Illustration claire sur fond clair : on lui donne un cadre encre. */
-.selah-cadre-encre img {
-	background: var(--wp--preset--color--encre);
-	border-radius: 1.25rem;
-	padding: var(--wp--preset--spacing--40);
+/* Articles du journal. */
+.selah-liste-articles .wp-block-post-featured-image img {
+	border-radius: var(--selah-rayon);
+}
+
+.selah-liste-articles .wp-block-post-title a:hover {
+	color: var(--selah-safran);
+}
+
+/* Fin d'article : pas de groupe vide sans article voisin. */
+.selah-nav-articles:not(:has(a)) {
+	display: none;
+}
+
+.wp-block-post-terms__prefix {
+	margin-inline-end: 0.4rem;
+}
+
+/* ------------------------------------------------------------------
+ * Pied de page
+ * ------------------------------------------------------------------ */
+
+.selah-pied {
+	padding: clamp(56px, 6vw, 88px) var(--selah-gouttiere) 32px !important;
+	border-top: 1px solid var(--wp--preset--color--trait);
+}
+
+.selah-pied__haut {
+	display: grid !important;
+	grid-template-columns: 1.4fr 1fr 1fr;
+	gap: 40px !important;
+}
+
+.selah-pied__haut > * {
+	margin: 0 !important;
+}
+
+.selah-logo {
+	margin: 0;
+	font-size: clamp(3.5rem, 2rem + 4vw, 6rem);
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+
+.selah-pied__titre {
+	margin: 0 0 14px;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--gris-2);
+}
+
+.selah-liste-liens {
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.selah-liste-liens a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.selah-pied__bas {
+	display: flex !important;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 12px !important;
+	margin-top: 56px !important;
+	padding-top: 24px;
+	border-top: 1px solid var(--wp--preset--color--trait);
+	font-size: 0.875rem;
+	color: var(--wp--preset--color--gris-2);
+}
+
+.selah-pied__bas > * {
+	margin: 0 !important;
+}
+
+@media (max-width: 860px) {
+	.selah-pied__haut {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.selah-pied__marque {
+		grid-column: 1 / -1;
+	}
 }

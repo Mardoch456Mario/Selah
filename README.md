@@ -3,8 +3,9 @@
 Site WordPress de présentation pour [Selah](https://selah-ebon.vercel.app/), le showroom de mode où
 **ton personnage essaie pour toi les pièces des créateurs de Cotonou**.
 
-Il reprend l'identité de l'application : direction « noir sur blanc » (encre `#0b0b0c`, blanc,
-fil safran `#c9922a` en rappel du kanvô), police Hanken Grotesk, boutons en pilule.
+Le design s'inspire des plateformes de streaming : fond noir, grandes images plein cadre,
+titres d'affiche, rangées de vignettes qu'on fait défiler, un seul accent safran (`#f4a91f`).
+Titres en Anton, textes en Hanken Grotesk.
 
 ![Page d'accueil](wp-content/themes/selah/screenshot.png)
 
@@ -25,7 +26,7 @@ wp-content/themes/selah/        Thème « Selah » (thème par blocs, modifiable
   templates/ parts/             Modèles de pages, en-tête, pied de page
   patterns/                     Sections et pages prêtes à l'emploi (compositions « Selah »)
   inc/installation.php          Création des pages en un clic
-  assets/                       Police Hanken Grotesk, logo, illustrations
+  assets/                       Polices Anton et Hanken Grotesk, icône, images (WebP)
 wp-content/plugins/selah-core/  Extension « Selah Core » : formulaire de demande d'accès
 scripts/                        Installation (WP-CLI) et fabrication des .zip
 docker-compose.yml              WordPress local avec Docker
@@ -35,9 +36,9 @@ docker-compose.yml              WordPress local avec Docker
 
 | Page | Adresse | Contenu |
 |---|---|---|
-| Accueil | `/` | Ouverture, comment ça marche, pourquoi Selah, appel aux créateurs, questions, formulaire |
-| Créateurs | `/createurs/` | Pour les ateliers et marques de Cotonou, étapes pour rejoindre, formulaire « créateur » |
-| À propos | `/a-propos/` | L'idée de Selah, les créateurs, l'identité « noir sur blanc » |
+| Accueil | `/` | Affiche plein écran, rangées « Six pièces pour commencer » et « Pour chaque occasion », trois épisodes, entre amis, créateurs, questions, formulaire |
+| Créateurs | `/createurs/` | Pour les ateliers et marques de Cotonou (au vouvoiement), matières, trois étapes, formulaire « créateur » |
+| À propos | `/a-propos/` | L'idée de Selah, le fil safran du kanvô, les créateurs |
 | Questions fréquentes | `/questions-frequentes/` | Questions en accordéon |
 | Demander un accès | `/demande-acces/` | Formulaire de demande de code |
 | Confidentialité | `/confidentialite/` | Usage des données du formulaire |
@@ -86,11 +87,14 @@ crée les pages et active les adresses lisibles. Il peut être relancé sans ris
   (ou *Compositions › En-tête / Pied de page*).
 - **Couleurs et typographie** : *Apparence › Éditeur › Styles*.
 - **Ajouter une section** : dans l'éditeur, bouton « + » › *Compositions* › catégorie **Selah**
-  (ouverture, comment ça marche, appel aux créateurs, questions, formulaire, bandeau kanvô…).
+  (affiche et rangées, trois épisodes, plein cadre, carte créateurs, questions, demande de code).
+- **Changer une image** : sélectionner le bloc *Couverture* (affiches, vignettes) ou *Image*, puis
+  *Remplacer* ; le point focal règle le recadrage.
 - **Lien vers l'application** : donner l'adresse `#selah-app` à un bouton ou à un lien ; le site le
   remplace par l'adresse réglée dans *Réglages › Selah*.
 - **Formulaire** : le code court `[selah_demande_acces]` l'affiche n'importe où ;
-  `[selah_demande_acces profil="createur"]` présélectionne « Je suis créateur·rice ».
+  `[selah_demande_acces profil="createur"]` présélectionne « Créateur·rice », et
+  `registre="vous"` passe ses textes au vouvoiement (page Créateurs).
 
 ## Les demandes d'accès
 
@@ -115,8 +119,10 @@ l'administration.
   pour les créateurs.
 - **La page Confidentialité** est un point de départ : faites-la valider, surtout si vous
   ajoutez une mesure d'audience (le site n'en a pas aujourd'hui).
-- **Les illustrations** (téléphone, portant) peuvent être remplacées par de vraies captures de
-  l'application et des photos des pièces.
+- **Les images** ont été générées par IA (Canva) pour illustrer la mode de Cotonou : les
+  personnes et les pièces représentées n'existent pas. Remplacez-les dès que possible par de
+  vraies photos des créations et par des captures de l'application. Les intitulés des vignettes
+  (« Robe kanvô », « Boubou brodé »…) décrivent ces images, pas un catalogue réel.
 
 ## Et Vercel ?
 
@@ -129,7 +135,7 @@ l'application elle-même est déployée depuis ce dépôt, il faudra retirer ce 
 ## Détails techniques
 
 - WordPress 6.6 ou plus récent (testé sur 7.1.2), PHP 7.4 ou plus récent.
-- Thème par blocs, sans constructeur de pages ni dépendance externe : la police est hébergée
-  dans le thème (licence SIL OFL, voir `assets/fonts/hanken-grotesk/OFL.txt`), aucun appel à
-  un service tiers.
+- Thème par blocs, sans constructeur de pages ni dépendance externe : les polices sont hébergées
+  dans le thème (licence SIL OFL, voir `assets/fonts/*/OFL.txt`), aucun appel à un service tiers.
+- Les 10 images pèsent 656 Ko au total (WebP).
 - Code conforme aux règles *WordPress-Extra* (PHP_CodeSniffer).

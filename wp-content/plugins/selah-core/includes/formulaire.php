@@ -71,7 +71,7 @@ function selah_core_textes( $registre ) {
 			'merci_titre'      => __( 'Merci, votre demande est bien arrivée.', 'selah-core' ),
 			'merci_texte'      => __( 'L’équipe Selah vous recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ),
 			'alerte'           => __( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ),
-			'legende'          => __( 'Vous êtes…', 'selah-core' ),
+			'legende'          => __( 'Vous venez pour…', 'selah-core' ),
 			'err_nom'          => __( 'Indiquez votre nom.', 'selah-core' ),
 			'err_email'        => __( 'Indiquez une adresse e-mail valide.', 'selah-core' ),
 			'err_profil'       => __( 'Choisissez votre profil.', 'selah-core' ),
@@ -84,7 +84,7 @@ function selah_core_textes( $registre ) {
 		'merci_titre'      => __( 'Merci, ta demande est bien arrivée.', 'selah-core' ),
 		'merci_texte'      => __( 'L’équipe Selah te recontacte très vite, par e-mail ou par téléphone.', 'selah-core' ),
 		'alerte'           => __( 'Quelques informations manquent ou sont à corriger :', 'selah-core' ),
-		'legende'          => __( 'Tu es…', 'selah-core' ),
+		'legende'          => __( 'Tu viens pour…', 'selah-core' ),
 		'err_nom'          => __( 'Indique ton nom.', 'selah-core' ),
 		'err_email'        => __( 'Indique une adresse e-mail valide.', 'selah-core' ),
 		'err_profil'       => __( 'Choisis ton profil.', 'selah-core' ),
@@ -169,19 +169,21 @@ function selah_core_formulaire( $atts ) {
 
 		<fieldset class="selah-formulaire__profils">
 			<legend><?php echo esc_html( $textes['legende'] ); ?></legend>
-			<?php foreach ( $profils as $cle => $libelle ) : ?>
-				<label class="selah-formulaire__choix">
-					<input type="radio" name="profil" value="<?php echo esc_attr( $cle ); ?>" <?php checked( $profil, $cle ); ?> <?php echo 'essayer' === $cle ? 'id="' . esc_attr( $id . '-profil' ) . '"' : ''; ?> />
-					<span><?php echo esc_html( $libelle ); ?></span>
-				</label>
-			<?php endforeach; ?>
+			<div class="selah-formulaire__choix-liste">
+				<?php foreach ( selah_core_profils_courts() as $cle => $libelle ) : ?>
+					<label class="selah-formulaire__choix">
+						<input type="radio" name="profil" value="<?php echo esc_attr( $cle ); ?>" <?php checked( $profil, $cle ); ?> <?php echo 'essayer' === $cle ? 'id="' . esc_attr( $id . '-profil' ) . '"' : ''; ?> />
+						<span><?php echo esc_html( $libelle ); ?></span>
+					</label>
+				<?php endforeach; ?>
+			</div>
 		</fieldset>
 
 		<?php
 		selah_core_champ(
 			$id,
 			'nom',
-			__( 'Nom et prénom', 'selah-core' ),
+			__( 'Nom', 'selah-core' ),
 			'text',
 			$valeur( 'nom' ),
 			$erreurs,
@@ -205,13 +207,13 @@ function selah_core_formulaire( $atts ) {
 		selah_core_champ(
 			$id,
 			'telephone',
-			__( 'Téléphone ou WhatsApp', 'selah-core' ),
+			__( 'Téléphone / WhatsApp', 'selah-core' ),
 			'tel',
 			$valeur( 'telephone' ),
 			$erreurs,
 			array(
 				'autocomplete' => 'tel',
-				'aide'         => __( 'Facultatif', 'selah-core' ),
+				'aide'         => __( '(facultatif)', 'selah-core' ),
 			)
 		);
 		selah_core_champ(
@@ -224,10 +226,21 @@ function selah_core_formulaire( $atts ) {
 			array(
 				'autocomplete' => 'organization',
 				'classe'       => 'selah-formulaire__champ--marque',
-				'aide'         => __( 'Pour les créateurs et créatrices', 'selah-core' ),
+				'aide'         => __( '(créateur·rice)', 'selah-core' ),
 			)
 		);
-		selah_core_champ( $id, 'message', __( 'Un mot pour l’équipe', 'selah-core' ), 'textarea', $valeur( 'message' ), $erreurs, array( 'aide' => __( 'Facultatif', 'selah-core' ) ) );
+		selah_core_champ(
+			$id,
+			'message',
+			__( 'Message', 'selah-core' ),
+			'textarea',
+			$valeur( 'message' ),
+			$erreurs,
+			array(
+				'aide'   => __( '(facultatif)', 'selah-core' ),
+				'classe' => 'selah-formulaire__champ--message',
+			)
+		);
 		?>
 
 		<div class="selah-formulaire__piege" aria-hidden="true">
