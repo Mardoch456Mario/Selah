@@ -161,7 +161,7 @@ function selah_core_formulaire( $atts ) {
 				<p><?php echo esc_html( $textes['alerte'] ); ?></p>
 				<ul>
 					<?php foreach ( $erreurs as $champ => $message ) : ?>
-						<li><a href="#<?php echo esc_attr( $id . '-' . $champ ); ?>"><?php echo esc_html( $message ); ?></a></li>
+						<li class="selah-formulaire__alerte-<?php echo esc_attr( $champ ); ?>"><a href="#<?php echo esc_attr( $id . '-' . $champ ); ?>"><?php echo esc_html( $message ); ?></a></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>

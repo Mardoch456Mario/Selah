@@ -8,6 +8,15 @@ fil safran `#c9922a` en rappel du kanvô), police Hanken Grotesk, boutons en pil
 
 ![Page d'accueil](wp-content/themes/selah/screenshot.png)
 
+## Voir le site sans l'installer
+
+[**Ouvrir la démonstration dans WordPress Playground**](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/Mardoch456Mario/Selah/main/blueprint.json)
+
+Le lien lance un vrai WordPress dans le navigateur (aucune installation, rien n'est publié) :
+il installe le thème et l'extension depuis la branche `main` de ce dépôt, crée les pages et
+vous connecte à l'administration. Le premier chargement prend environ une minute. Tout ce que
+vous y modifiez disparaît en fermant l'onglet. La recette est dans `blueprint.json`.
+
 ## Ce que contient le dépôt
 
 ```
@@ -108,6 +117,13 @@ l'administration.
   ajoutez une mesure d'audience (le site n'en a pas aujourd'hui).
 - **Les illustrations** (téléphone, portant) peuvent être remplacées par de vraies captures de
   l'application et des photos des pièces.
+
+## Et Vercel ?
+
+Ce site est un site **WordPress** (PHP et base de données) : il s'installe chez un hébergeur
+WordPress, pas sur Vercel. Si ce dépôt est relié à un projet Vercel, les déploiements y
+échoueront ; on peut détacher le dépôt du projet Vercel, ou ajouter un `vercel.json` contenant
+`{"git": {"deploymentEnabled": false}}`.
 
 ## Détails techniques
 

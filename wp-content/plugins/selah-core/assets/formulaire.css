@@ -10,6 +10,7 @@
 	--sf-succes: var(--wp--preset--color--succes, #1f7a4d);
 	--sf-contour: #8e8e93; /* contraste 3,3:1 sur blanc, minimum demandé pour un champ (WCAG 1.4.11) */
 
+	box-sizing: border-box;
 	display: grid;
 	gap: 1rem;
 	margin-block: 2rem;
@@ -124,8 +125,13 @@
 	outline-offset: 2px;
 }
 
-/* Le champ « Marque » ne s'affiche que pour les créateurs (si le navigateur sait faire). */
-.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) .selah-formulaire__champ--marque {
+/*
+ * Le champ « Marque » ne s'affiche que pour les créateurs (si le navigateur sait
+ * faire), et son erreur disparaît de l'alerte avec lui. L'alerte entière se
+ * masque si c'était sa seule erreur.
+ */
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) :is(.selah-formulaire__champ--marque, .selah-formulaire__alerte-marque),
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) .selah-formulaire__alerte:not(:has(li:not(.selah-formulaire__alerte-marque))) {
 	display: none;
 }
 

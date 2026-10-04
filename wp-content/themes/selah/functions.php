@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SELAH_VERSION', '1.0.0' );
+define( 'SELAH_VERSION', '1.1.0' );
 
 /**
  * Adresse par défaut de l'application Selah.

@@ -6,7 +6,7 @@ Description: Thème vitrine de Selah, le showroom de mode où ton personnage ess
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 1.0.0
+Version: 1.1.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: selah
@@ -52,9 +52,37 @@ Tags: block-patterns, full-site-editing, one-column, custom-colors, editor-style
 	}
 }
 
-/* Les ancres (#comment-ca-marche, #demande-acces) ne passent pas sous l'en-tête. */
-html {
-	scroll-padding-top: 5.5rem;
+/*
+ * Les ancres (#comment-ca-marche, #demande-acces) ne passent pas sous l'en-tête.
+ * Pas de scroll-padding sur html : il ferait défiler la page dès qu'un élément
+ * de l'en-tête collant reçoit le focus (à la fermeture du menu mobile, par exemple).
+ */
+.wp-site-blocks [id] {
+	scroll-margin-top: 5.5rem;
+}
+
+@media (min-width: 601px) {
+	.admin-bar .wp-site-blocks [id] {
+		scroll-margin-top: calc(5.5rem + var(--wp-admin--admin-bar--height, 0px));
+	}
+}
+
+/* Pages courtes : le pied de page descend en bas de l'écran. */
+.wp-site-blocks {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+.wp-site-blocks > main {
+	flex: 1 0 auto;
+}
+
+@media (min-width: 601px) {
+	.admin-bar .wp-site-blocks {
+		min-height: calc(100dvh - var(--wp-admin--admin-bar--height, 0px));
+	}
 }
 
 /*
@@ -216,7 +244,7 @@ html {
 /* Pastille « Démonstration privée ». */
 .selah-pastille {
 	display: inline-flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 0.5rem;
 	border: 1px solid var(--wp--preset--color--trait);
 	border-radius: 999px;
@@ -225,10 +253,34 @@ html {
 
 .selah-pastille::before {
 	content: "";
+	flex: none;
+	margin-top: 0.45em;
 	width: 0.5rem;
 	height: 0.5rem;
 	border-radius: 999px;
 	background: var(--wp--preset--color--safran);
+}
+
+/* Menu mobile ouvert : grands liens alignés à gauche, comme dans l'app. */
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open {
+	--navigation-layout-justification-setting: flex-start;
+	padding: 1.25rem 1.5rem;
+}
+
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+	padding-top: 3.5rem;
+}
+
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+	--navigation-layout-justification-setting: flex-start;
+	align-items: flex-start;
+	gap: 1.1rem;
+}
+
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-size: var(--wp--preset--font-size--titre);
+	font-weight: 700;
+	letter-spacing: -0.025em;
 }
 
 /* Navigation mobile : le bouton du menu en pilule. */
@@ -241,6 +293,25 @@ html {
 @media (max-width: 781px) {
 	.selah-masquer-mobile {
 		display: none !important;
+	}
+}
+
+@media (min-width: 782px) {
+	.selah-seulement-mobile {
+		display: none !important;
+	}
+}
+
+/* Petits écrans : les boutons s'empilent en pleine largeur. */
+@media (max-width: 480px) {
+	.wp-block-buttons > .wp-block-button {
+		flex: 1 1 100%;
+	}
+
+	.wp-block-buttons > .wp-block-button > .wp-block-button__link {
+		display: block;
+		width: 100%;
+		text-align: center;
 	}
 }
 
@@ -297,6 +368,11 @@ html {
 	background-color: var(--wp--preset--color--encre);
 	border-color: var(--wp--preset--color--encre);
 	color: var(--wp--preset--color--blanc);
+}
+
+/* Fin d'article : pas de groupe vide quand il n'y a ni article précédent ni suivant. */
+.selah-nav-articles:not(:has(a)) {
+	display: none;
 }
 
 /* Date · catégorie d'un article : le point à égale distance des deux. */

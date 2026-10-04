@@ -16,8 +16,8 @@
 	<div class="wp-block-group alignwide">
 		<!-- wp:group {"style":{"spacing":{"blockGap":"0.6rem"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 		<div class="wp-block-group">
-			<!-- wp:image {"width":"32px","height":"32px","sizeSlug":"full","linkDestination":"custom","className":"selah-masquer-mobile"} -->
-			<figure class="wp-block-image size-full is-resized selah-masquer-mobile"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/icone.svg' ) ); ?>" alt="" style="width:32px;height:32px"/></a></figure>
+			<!-- wp:image {"width":"32px","height":"32px","sizeSlug":"full","linkDestination":"none","className":"selah-masquer-mobile"} -->
+			<figure class="wp-block-image size-full is-resized selah-masquer-mobile"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/icone.svg' ) ); ?>" alt="" style="width:32px;height:32px"/></figure>
 			<!-- /wp:image -->
 
 			<!-- wp:site-title {"level":0} /-->
@@ -31,6 +31,7 @@
 				<!-- wp:navigation-link {"label":"Créateurs","url":"<?php echo esc_url( home_url( '/createurs/' ) ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"À propos","url":"<?php echo esc_url( home_url( '/a-propos/' ) ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"Questions","url":"<?php echo esc_url( home_url( '/questions-frequentes/' ) ); ?>","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"J’ai un code","url":"#selah-app","kind":"custom","className":"selah-seulement-mobile"} /-->
 			<!-- /wp:navigation -->
 
 			<!-- wp:buttons {"className":"selah-masquer-mobile"} -->

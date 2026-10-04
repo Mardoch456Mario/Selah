@@ -17,7 +17,7 @@
 		<!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
 		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%">
 			<!-- wp:paragraph {"className":"selah-pastille","fontSize":"secondaire"} -->
-			<p class="selah-pastille has-secondaire-font-size">Démonstration privée · Créateurs de Cotonou</p>
+			<p class="selah-pastille has-secondaire-font-size">Démo privée · Créateurs de Cotonou</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:heading {"level":1,"className":"selah-fil"} -->

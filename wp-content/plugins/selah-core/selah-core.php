@@ -3,7 +3,7 @@
  * Plugin Name:       Selah Core
  * Plugin URI:        https://selah-ebon.vercel.app/
  * Description:       Demandes d’accès à la démonstration Selah : formulaire, suivi dans l’administration, notification par e-mail et export CSV. Règle aussi l’adresse de l’application.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.6
  * Requires PHP:      7.4
  * Author:            Équipe Selah
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SELAH_CORE_VERSION', '1.0.0' );
+define( 'SELAH_CORE_VERSION', '1.1.0' );
 define( 'SELAH_CORE_FICHIER', __FILE__ );
 define( 'SELAH_CORE_URL_APP_DEFAUT', 'https://selah-ebon.vercel.app/' );
 

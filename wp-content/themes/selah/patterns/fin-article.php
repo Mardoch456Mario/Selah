@@ -15,8 +15,8 @@ $selah_journal = $selah_journal ? get_permalink( $selah_journal ) : home_url( '/
 <hr class="wp-block-separator has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--40)"/>
 <!-- /wp:separator -->
 
-<!-- wp:group {"style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group">
+<!-- wp:group {"className":"selah-nav-articles","style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group selah-nav-articles">
 	<!-- wp:post-navigation-link {"type":"previous","label":"Article précédent","showTitle":true} /-->
 
 	<!-- wp:post-navigation-link {"label":"Article suivant","showTitle":true} /-->
