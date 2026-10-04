@@ -121,9 +121,10 @@ l'administration.
 ## Et Vercel ?
 
 Ce site est un site **WordPress** (PHP et base de données) : il s'installe chez un hébergeur
-WordPress, pas sur Vercel. Si ce dépôt est relié à un projet Vercel, les déploiements y
-échoueront ; on peut détacher le dépôt du projet Vercel, ou ajouter un `vercel.json` contenant
-`{"git": {"deploymentEnabled": false}}`.
+WordPress, pas sur Vercel. Ce dépôt étant relié au projet Vercel de l'application, le fichier
+`vercel.json` (`"git": {"deploymentEnabled": false}`) demande à Vercel de ne rien déployer
+depuis ce dépôt : l'application en ligne n'est jamais remplacée par ce site. Si un jour
+l'application elle-même est déployée depuis ce dépôt, il faudra retirer ce fichier.
 
 ## Détails techniques
 
