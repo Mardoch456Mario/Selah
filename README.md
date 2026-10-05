@@ -82,7 +82,8 @@ crée les pages et active les adresses lisibles. Il peut être relancé sans ris
 
 ## Modifier le site
 
-- **Textes des pages** : *Pages*, puis ouvrir la page dans l'éditeur.
+- **Textes des pages** : *Pages*, puis ouvrir la page dans l'éditeur. Le résumé affiché dans les
+  résultats de recherche se modifie dans le panneau *Extrait* de la page.
 - **Page d'accueil, en-tête, pied de page** : *Apparence › Éditeur › Modèles › Page d'accueil*
   (ou *Compositions › En-tête / Pied de page*).
 - **Couleurs et typographie** : *Apparence › Éditeur › Styles*.
