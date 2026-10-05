@@ -31,6 +31,7 @@
 }
 
 /* Ce qui occupe toute la largeur. */
+.selah-formulaire__erreur--consentement,
 .selah-formulaire__alerte,
 .selah-formulaire__profils,
 .selah-formulaire__champ--message,
@@ -85,6 +86,19 @@
 
 .selah-formulaire ::placeholder {
 	color: #8c8c8c;
+}
+
+/* Le message d'erreur du consentement se colle à sa case. */
+.selah-formulaire .selah-formulaire__erreur--consentement {
+	margin-bottom: -10px;
+}
+
+/*
+ * Quand un lien de l'alerte amène sur un champ, son libellé et son message
+ * d'erreur restent visibles sous l'en-tête collant du thème.
+ */
+.selah-formulaire :is(input, textarea)[id] {
+	scroll-margin-top: calc(var(--selah-entete, 0px) + 72px);
 }
 
 .selah-formulaire input:focus,
@@ -235,7 +249,7 @@
 	color: var(--sf-erreur);
 }
 
-.selah-formulaire__erreur {
+.selah-formulaire .selah-formulaire__erreur {
 	margin: 0 0 0.4rem;
 	font-size: 0.875rem;
 	color: var(--sf-erreur);
@@ -261,7 +275,7 @@
 	margin: 0;
 }
 
-.selah-formulaire__titre {
+.selah-formulaire .selah-formulaire__titre {
 	margin-bottom: 0.4rem !important;
 	font-size: 1.375rem;
 	font-weight: 800;

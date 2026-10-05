@@ -87,6 +87,14 @@ h3 {
 	scroll-margin-top: calc(var(--selah-entete) + 0.5rem);
 }
 
+/*
+ * Ce qui reçoit le focus au clavier ne passe pas sous l'en-tête collant.
+ * (Pas de scroll-padding sur html : la page sauterait à la fermeture du menu.)
+ */
+.wp-site-blocks > :is(main, footer) :where(a, button, input, textarea, select, summary, [tabindex]) {
+	scroll-margin-top: calc(var(--selah-entete) + 16px);
+}
+
 /* L'appel final a déjà son propre espace en haut : on ne décale que ce qui manque. */
 .wp-site-blocks .selah-appel[id] {
 	scroll-margin-top: max(0px, calc(var(--selah-entete) + 16px - clamp(80px, 9vw, 140px)));
@@ -128,6 +136,7 @@ h3 {
 	line-height: 1.12;
 	text-transform: uppercase;
 	text-wrap: balance;
+	overflow-wrap: break-word; /* dernier recours pour un mot plus large que l'écran. */
 }
 
 .selah-affiche em {
@@ -145,9 +154,9 @@ h3 {
 	line-height: 0.9;
 }
 
-/* Petits téléphones : « à l’affiche. » tient encore sur une ligne. */
+/* Petits téléphones : « à l’affiche. », « nouvelles »… tiennent encore sur une ligne. */
 @media (max-width: 400px) {
-	.selah-tete-page .selah-affiche--xl {
+	.selah-affiche--xl {
 		font-size: min(var(--wp--preset--font-size--affiche-xl), 19.5vw);
 	}
 }
@@ -326,6 +335,7 @@ h3 {
 @supports (animation-timeline: scroll()) {
 	.selah-entete {
 		animation: selah-entete-fond linear both;
+		animation-duration: 1ms; /* la durée suit le défilement ; évite la valeur 0s là où « auto » n'existe pas. */
 		animation-timeline: scroll(root);
 		animation-range: 0 140px;
 	}
@@ -367,7 +377,8 @@ h3 {
 	background: var(--selah-safran);
 }
 
-.selah-entete .wp-block-navigation a {
+/* Sélecteur assez précis pour passer devant la couleur « inherit » du cœur. */
+.selah-entete .wp-block-navigation a.wp-block-navigation-item__content {
 	color: rgb(255 255 255 / 0.82);
 }
 
@@ -427,12 +438,6 @@ h3 {
 	}
 }
 
-@media (max-width: 781px) {
-	.selah-masquer-mobile {
-		display: none !important;
-	}
-}
-
 /* Le lien « J'ai un code » du menu ne sert que dans le menu mobile ouvert. */
 .selah-entete .wp-block-navigation__responsive-container:not(.is-menu-open) .selah-menu-seulement {
 	display: none !important;
@@ -445,19 +450,19 @@ h3 {
 	}
 }
 
-/* Sur téléphone : logo, puis « J'ai un code », puis le bouton du menu. */
+/*
+ * « J'ai un code » existe deux fois dans l'en-tête : avant le menu pour le
+ * téléphone (logo, bouton, menu), après le menu au-delà. Celui qui ne sert pas
+ * est masqué, donc absent aussi de la tabulation.
+ */
 @media (max-width: 599px) {
-	.selah-entete .wp-block-navigation {
-		order: 2;
-	}
-
-	.selah-entete .wp-block-buttons {
-		margin-left: auto !important;
+	.selah-entete .selah-sauf-telephone {
+		display: none !important;
 	}
 }
 
-@media (min-width: 782px) {
-	.selah-seulement-mobile {
+@media (min-width: 600px) {
+	.selah-entete .selah-seulement-telephone {
 		display: none !important;
 	}
 }
@@ -668,6 +673,12 @@ h3 {
 	scroll-padding-inline: var(--selah-gouttiere);
 	scrollbar-width: thin;
 	scrollbar-color: #3a3a3a transparent;
+}
+
+.selah-defile:focus-visible {
+	outline: 3px solid var(--selah-safran);
+	outline-offset: -3px;
+	border-radius: 0;
 }
 
 .selah-defile > * {
@@ -1305,6 +1316,13 @@ h3 {
 
 .selah-prose a {
 	color: var(--selah-safran);
+}
+
+/* Avant WordPress 7.0, la grille à 3 colonnes ne se replie pas d'elle-même. */
+@media (max-width: 559px) {
+	.selah-cartes.is-layout-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
 }
 
 /* Cartes (grilles de la page Créateurs, du journal…). */

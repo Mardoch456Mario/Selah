@@ -16,6 +16,12 @@
 <div class="wp-block-group alignfull selah-entete"><!-- wp:group {"style":{"spacing":{"blockGap":"clamp(20px, 3vw, 48px)"}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center"}} -->
 <div class="wp-block-group"><!-- wp:site-title {"level":0} /-->
 
+<!-- wp:buttons {"className":"selah-seulement-telephone","style":{"spacing":{"margin":{"left":"auto"}}}} -->
+<div class="wp-block-buttons selah-seulement-telephone" style="margin-left:auto"><!-- wp:button {"className":"is-style-outline selah-bouton-petit"} -->
+<div class="wp-block-button is-style-outline selah-bouton-petit"><a class="wp-block-button__link wp-element-button" href="#selah-app">J’ai un code</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
 <!-- wp:navigation {"style":{"spacing":{"blockGap":"clamp(18px, 2.2vw, 32px)"}},"layout":{"type":"flex","justifyContent":"left"}} -->
 <!-- wp:navigation-link {"label":"Comment ça marche","url":"<?php echo esc_url( home_url( '/#comment-ca-marche' ) ); ?>","kind":"custom","className":"selah-masquer-etroit"} /-->
 
@@ -28,8 +34,8 @@
 <!-- wp:navigation-link {"label":"J’ai un code","url":"#selah-app","kind":"custom","className":"selah-menu-seulement"} /-->
 <!-- /wp:navigation -->
 
-<!-- wp:buttons {"style":{"spacing":{"margin":{"left":"auto"}}}} -->
-<div class="wp-block-buttons" style="margin-left:auto"><!-- wp:button {"className":"is-style-outline selah-bouton-petit"} -->
+<!-- wp:buttons {"className":"selah-sauf-telephone","style":{"spacing":{"margin":{"left":"auto"}}}} -->
+<div class="wp-block-buttons selah-sauf-telephone" style="margin-left:auto"><!-- wp:button {"className":"is-style-outline selah-bouton-petit"} -->
 <div class="wp-block-button is-style-outline selah-bouton-petit"><a class="wp-block-button__link wp-element-button" href="#selah-app">J’ai un code</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>

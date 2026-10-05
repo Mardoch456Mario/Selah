@@ -251,8 +251,11 @@ function selah_core_formulaire( $atts ) {
 			<input type="text" id="<?php echo esc_attr( $id . '-site' ); ?>" name="site_web" value="" tabindex="-1" autocomplete="off" />
 		</div>
 
+		<?php if ( isset( $erreurs['consentement'] ) ) : ?>
+			<p class="selah-formulaire__erreur selah-formulaire__erreur--consentement" id="<?php echo esc_attr( $id . '-consentement-erreur' ); ?>"><?php echo esc_html( $erreurs['consentement'] ); ?></p>
+		<?php endif; ?>
 		<label class="selah-formulaire__consentement<?php echo isset( $erreurs['consentement'] ) ? ' a-une-erreur' : ''; ?>">
-			<input type="checkbox" name="consentement" value="1" id="<?php echo esc_attr( $id . '-consentement' ); ?>" required <?php checked( ! empty( $valeurs['consentement'] ) ); ?> />
+			<input type="checkbox" name="consentement" value="1" id="<?php echo esc_attr( $id . '-consentement' ); ?>" required<?php echo isset( $erreurs['consentement'] ) ? ' aria-invalid="true" aria-describedby="' . esc_attr( $id . '-consentement-erreur' ) . '"' : ''; ?> <?php checked( ! empty( $valeurs['consentement'] ) ); ?> />
 			<span>
 				<?php
 				printf(

@@ -51,6 +51,8 @@ function selah_reglages() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'style.css' );
 	remove_theme_support( 'core-block-patterns' );
+	// Les pages ont un résumé (affiché dans la recherche) : il doit rester modifiable.
+	add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'after_setup_theme', 'selah_reglages' );
 
@@ -187,6 +189,57 @@ function selah_espaces_dans_les_resumes( $contenu ) {
 	return preg_replace( '#<br\s*/?>#i', ' ', $contenu );
 }
 add_filter( 'the_content', 'selah_espaces_dans_les_resumes', 99 );
+
+/**
+ * Rangées défilantes : atteignables au clavier (flèches) et nommées par leur
+ * titre pour les lecteurs d'écran. Le bloc Groupe n'enregistre pas ces attributs.
+ *
+ * @param string $contenu Rendu du groupe.
+ * @param array  $bloc    Bloc analysé.
+ * @return string
+ */
+function selah_rangees_accessibles( $contenu, $bloc ) {
+	static $numero = 0;
+
+	$classes = isset( $bloc['attrs']['className'] ) ? $bloc['attrs']['className'] : '';
+	if ( ! preg_match( '/(^|\s)selah-rangee(\s|$)/', $classes ) || ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $contenu;
+	}
+
+	$balises = new WP_HTML_Tag_Processor( $contenu );
+	if ( ! $balises->next_tag( 'h2' ) ) {
+		return $contenu;
+	}
+
+	$titre = $balises->get_attribute( 'id' );
+	if ( ! is_string( $titre ) || '' === $titre ) {
+		$titre = 'selah-rangee-' . ( ++$numero );
+		$balises->set_attribute( 'id', $titre );
+	}
+
+	if ( ! $balises->next_tag( array( 'class_name' => 'selah-defile' ) ) ) {
+		return $contenu;
+	}
+	$balises->set_attribute( 'tabindex', '0' );
+	$balises->set_attribute( 'role', 'region' );
+	$balises->set_attribute( 'aria-labelledby', $titre );
+
+	return $balises->get_updated_html();
+}
+add_filter( 'render_block_core/group', 'selah_rangees_accessibles', 10, 2 );
+
+/**
+ * Au clavier, un élément qui reçoit le focus sous l'en-tête collant est ramené
+ * juste en dessous. Le navigateur ne fait pas défiler un élément déjà dans la
+ * fenêtre, même caché par l'en-tête ; un scroll-padding sur html ferait, lui,
+ * sauter la page à la fermeture du menu.
+ */
+function selah_focus_hors_entete() {
+	wp_print_inline_script_tag(
+		"document.addEventListener('focusin',function(e){var h=document.querySelector('.selah-entete'),t=e.target;if(!h||h.contains(t)||!t.matches||!t.matches(':focus-visible'))return;var b=h.getBoundingClientRect().bottom,r=t.getBoundingClientRect();if(r.top<b)window.scrollBy(0,r.top-b-16);});"
+	);
+}
+add_action( 'wp_footer', 'selah_focus_hors_entete' );
 
 /**
  * Icône du site par défaut tant qu'aucune n'est choisie dans l'administration.
