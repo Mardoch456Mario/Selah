@@ -1,0 +1,305 @@
+/* Formulaire de demande d'accès Selah : version sombre, en verre dépoli. */
+
+.selah-formulaire {
+	--sf-noir: var(--wp--preset--color--noir, #070707);
+	--sf-blanc: var(--wp--preset--color--blanc, #fff);
+	--sf-gris: var(--wp--preset--color--gris, #b4b4b4);
+	--sf-safran: var(--wp--preset--color--safran, #f4a91f);
+	--sf-erreur: var(--wp--preset--color--erreur, #ff7a6b);
+	--sf-succes: var(--wp--preset--color--succes, #4cc38a);
+	--sf-champ: #161616;
+	--sf-contour: #6e6e6e; /* contraste ≥ 3:1 avec la carte et le champ (WCAG 1.4.11) */
+
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	margin: 0;
+	padding: clamp(22px, 3vw, 36px);
+	background: rgb(10 10 10 / 0.86);
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
+	border: 1px solid rgb(255 255 255 / 0.12);
+	border-radius: 16px;
+	color: var(--sf-blanc);
+	text-align: left;
+}
+
+.selah-formulaire > * {
+	min-width: 0;
+	margin: 0;
+}
+
+/* Ce qui occupe toute la largeur. */
+.selah-formulaire__erreur--consentement,
+.selah-formulaire__alerte,
+.selah-formulaire__profils,
+.selah-formulaire__champ--message,
+.selah-formulaire__consentement,
+.selah-formulaire__envoyer {
+	grid-column: 1 / -1;
+}
+
+.selah-formulaire fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.selah-formulaire legend,
+.selah-formulaire__champ label {
+	display: block;
+	margin-bottom: 8px;
+	padding: 0;
+	font-size: 0.875rem;
+	font-weight: 700;
+}
+
+.selah-formulaire__aide {
+	font-weight: 500;
+	color: var(--sf-gris);
+	font-size: 0.8125rem;
+}
+
+.selah-formulaire input[type="text"],
+.selah-formulaire input[type="email"],
+.selah-formulaire input[type="tel"],
+.selah-formulaire textarea {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 13px 14px;
+	border: 1.5px solid var(--sf-contour);
+	border-radius: 10px;
+	background: var(--sf-champ);
+	color: var(--sf-blanc);
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.selah-formulaire textarea {
+	min-height: 96px;
+	resize: vertical;
+}
+
+.selah-formulaire ::placeholder {
+	color: #8c8c8c;
+}
+
+/* Le message d'erreur du consentement se colle à sa case. */
+.selah-formulaire .selah-formulaire__erreur--consentement {
+	margin-bottom: -10px;
+}
+
+/*
+ * Quand un lien de l'alerte amène sur un champ, son libellé et son message
+ * d'erreur restent visibles sous l'en-tête collant du thème.
+ */
+.selah-formulaire :is(input, textarea)[id] {
+	scroll-margin-top: calc(var(--selah-entete, 0px) + 72px);
+}
+
+.selah-formulaire input:focus,
+.selah-formulaire textarea:focus {
+	outline: none;
+	border-color: var(--sf-safran);
+}
+
+.selah-formulaire input:focus-visible,
+.selah-formulaire textarea:focus-visible {
+	outline: 3px solid var(--sf-safran);
+	outline-offset: 2px;
+}
+
+/* Profils : trois pilules. */
+.selah-formulaire__choix-liste {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+}
+
+.selah-formulaire__choix {
+	position: relative;
+	cursor: pointer;
+}
+
+.selah-formulaire__choix input {
+	position: absolute;
+	opacity: 0;
+	inset: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.selah-formulaire__choix span {
+	display: grid;
+	place-items: center;
+	min-height: 46px;
+	padding: 0 8px;
+	border: 1.5px solid var(--sf-contour);
+	border-radius: 999px;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	line-height: 1.15;
+	text-align: center;
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.selah-formulaire__choix:hover span {
+	border-color: var(--sf-blanc);
+}
+
+.selah-formulaire__choix input:checked + span {
+	background: var(--sf-blanc);
+	border-color: var(--sf-blanc);
+	color: var(--sf-noir);
+}
+
+.selah-formulaire__choix input:focus-visible + span {
+	outline: 3px solid var(--sf-safran);
+	outline-offset: 2px;
+}
+
+/* Sans le champ « Marque », le téléphone prend toute la largeur. */
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) .selah-formulaire__champ:has(input[name="telephone"]) {
+	grid-column: 1 / -1;
+}
+
+/*
+ * Le champ « Marque » ne s'affiche que pour les créateurs (si le navigateur sait
+ * faire), et son erreur disparaît de l'alerte avec lui. L'alerte entière se
+ * masque si c'était sa seule erreur.
+ */
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) :is(.selah-formulaire__champ--marque, .selah-formulaire__alerte-marque),
+.selah-formulaire:has(.selah-formulaire__profils input:checked):not(:has(input[value="createur"]:checked)) .selah-formulaire__alerte:not(:has(li:not(.selah-formulaire__alerte-marque))) {
+	display: none;
+}
+
+.selah-formulaire__consentement {
+	display: grid;
+	grid-template-columns: 22px 1fr;
+	gap: 12px;
+	font-size: 0.875rem;
+	line-height: 1.45;
+	color: var(--sf-gris);
+	cursor: pointer;
+}
+
+.selah-formulaire__consentement input {
+	width: 20px;
+	height: 20px;
+	margin: 1px 0 0;
+	accent-color: var(--sf-safran);
+}
+
+.selah-formulaire__consentement a {
+	color: var(--sf-blanc);
+}
+
+.selah-formulaire__envoyer {
+	min-height: 56px;
+	padding: 0 28px;
+	border: 0;
+	border-radius: 999px;
+	background: var(--sf-safran);
+	color: var(--sf-noir);
+	font: inherit;
+	font-size: 1.0625rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+
+.selah-formulaire__envoyer:hover,
+.selah-formulaire__envoyer:focus-visible {
+	background: #ffbb3a;
+}
+
+/* Champ piège pour les robots : hors écran, invisible des humains. */
+.selah-formulaire__piege {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Erreurs. */
+.selah-formulaire__alerte {
+	padding: 0.9rem 1.1rem;
+	border-left: 3px solid var(--sf-erreur);
+	border-radius: 8px;
+	background: rgb(255 122 107 / 0.1);
+	font-size: 0.875rem;
+}
+
+.selah-formulaire__alerte p,
+.selah-formulaire__alerte ul {
+	margin: 0;
+}
+
+.selah-formulaire__alerte ul {
+	margin-top: 0.4rem;
+	padding-left: 1.1rem;
+}
+
+.selah-formulaire__alerte a {
+	color: var(--sf-erreur);
+}
+
+.selah-formulaire .selah-formulaire__erreur {
+	margin: 0 0 0.4rem;
+	font-size: 0.875rem;
+	color: var(--sf-erreur);
+}
+
+.selah-formulaire .a-une-erreur input,
+.selah-formulaire .a-une-erreur textarea {
+	border-color: var(--sf-erreur);
+}
+
+.selah-formulaire__consentement.a-une-erreur {
+	color: var(--sf-erreur);
+}
+
+/* Confirmation. */
+.selah-formulaire--merci {
+	display: block;
+	border-color: var(--sf-succes);
+	text-align: center;
+}
+
+.selah-formulaire--merci p {
+	margin: 0;
+}
+
+.selah-formulaire .selah-formulaire__titre {
+	margin-bottom: 0.4rem !important;
+	font-size: 1.375rem;
+	font-weight: 800;
+	color: var(--sf-succes);
+}
+
+@media (max-width: 560px) {
+	.selah-formulaire {
+		grid-template-columns: 1fr;
+	}
+
+	/* Chaque pilule prend la largeur de son texte et passe à la ligne s'il le faut. */
+	.selah-formulaire__choix-liste {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.selah-formulaire__choix {
+		flex: 1 1 auto;
+	}
+
+	.selah-formulaire__choix span {
+		padding: 0 14px;
+		font-size: 0.8125rem;
+		white-space: nowrap;
+	}
+}
