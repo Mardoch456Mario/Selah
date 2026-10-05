@@ -87,9 +87,9 @@ h3 {
 	scroll-margin-top: calc(var(--selah-entete) + 0.5rem);
 }
 
-/* L'appel final a déjà son propre espace en haut : il se cale au bord. */
+/* L'appel final a déjà son propre espace en haut : on ne décale que ce qui manque. */
 .wp-site-blocks .selah-appel[id] {
-	scroll-margin-top: 0;
+	scroll-margin-top: max(0px, calc(var(--selah-entete) + 16px - clamp(80px, 9vw, 140px)));
 }
 
 /* ------------------------------------------------------------------
@@ -137,12 +137,19 @@ h3 {
 
 .selah-affiche--xl {
 	font-size: var(--wp--preset--font-size--affiche-xl);
-	line-height: 1.02;
+	line-height: 1.16; /* place pour les accents des capitales (« À », « É »). */
 }
 
 /* Sur l'ouverture, les lignes se serrent comme sur une affiche de film. */
 .selah-ouverture .selah-affiche--xl {
 	line-height: 0.9;
+}
+
+/* Petits téléphones : « à l’affiche. » tient encore sur une ligne. */
+@media (max-width: 400px) {
+	.selah-tete-page .selah-affiche--xl {
+		font-size: min(var(--wp--preset--font-size--affiche-xl), 19.5vw);
+	}
 }
 
 /* Mot très long (« confidentialité ») : il doit tenir sur un téléphone. */
@@ -182,6 +189,18 @@ h3 {
 	background: currentColor;
 	-webkit-mask: var(--selah-icone-fleche) center / contain no-repeat;
 	mask: var(--selah-icone-fleche) center / contain no-repeat;
+}
+
+/* Flèche retour, avant le texte. */
+.wp-block-button.selah-retour .wp-element-button::before {
+	content: "";
+	flex: none;
+	width: 20px;
+	height: 20px;
+	background: currentColor;
+	-webkit-mask: var(--selah-icone-fleche) center / contain no-repeat;
+	mask: var(--selah-icone-fleche) center / contain no-repeat;
+	transform: rotate(180deg);
 }
 
 /* Icône « i » avant le texte (« Comment ça marche »). */
@@ -299,7 +318,7 @@ h3 {
 /* Dès qu'on défile, le fond devient noir pour que le menu reste lisible. */
 @keyframes selah-entete-fond {
 	to {
-		background-color: rgb(7 7 7 / 0.94);
+		background-color: var(--selah-noir);
 		box-shadow: 0 1px 0 var(--wp--preset--color--trait);
 	}
 }
@@ -314,13 +333,22 @@ h3 {
 
 @supports not (animation-timeline: scroll()) {
 	.selah-entete {
-		background-color: rgb(7 7 7 / 0.9);
+		background-color: rgb(7 7 7 / 0.96);
 	}
 }
 
 .selah-entete > .wp-block-group {
 	height: 100%;
 	gap: clamp(20px, 3vw, 48px);
+}
+
+.selah-entete .wp-block-site-title {
+	flex: none;
+	white-space: nowrap;
+}
+
+.selah-entete .wp-block-navigation-item__content {
+	padding-block: 9px;
 }
 
 .selah-entete .wp-block-navigation__container {
@@ -356,7 +384,8 @@ h3 {
 	--navigation-layout-justification-setting: flex-start;
 	background: var(--selah-noir) !important;
 	color: var(--wp--preset--color--blanc) !important;
-	padding: 1.25rem var(--selah-gouttiere);
+	/* La croix se pose exactement à la place du bouton du menu. */
+	padding: calc((var(--selah-entete) - 40px) / 2) var(--selah-gouttiere) 1.25rem;
 }
 
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
@@ -370,11 +399,16 @@ h3 {
 }
 
 .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	padding-block: 0;
 	font-family: var(--wp--preset--font-family--anton);
 	font-size: clamp(2.5rem, 12vw, 3.5rem);
 	line-height: 1.05;
 	text-transform: uppercase;
 	color: var(--wp--preset--color--blanc);
+}
+
+.wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open a[aria-current="page"] {
+	color: var(--selah-safran);
 }
 
 .wp-block-navigation__responsive-container-open,
@@ -402,6 +436,13 @@ h3 {
 /* Le lien « J'ai un code » du menu ne sert que dans le menu mobile ouvert. */
 .selah-entete .wp-block-navigation__responsive-container:not(.is-menu-open) .selah-menu-seulement {
 	display: none !important;
+}
+
+/* Tablettes étroites : sans l'ancre « Comment ça marche », le menu tient sur une ligne. */
+@media (min-width: 600px) and (max-width: 719px) {
+	.selah-entete .selah-masquer-etroit {
+		display: none !important;
+	}
 }
 
 /* Sur téléphone : logo, puis « J'ai un code », puis le bouton du menu. */
@@ -739,8 +780,9 @@ h3 {
 .selah-occasion__titre {
 	font-family: var(--wp--preset--font-family--anton);
 	font-size: clamp(1.625rem, 1rem + 1.6vw, 2.25rem);
-	line-height: 0.95;
+	line-height: 1.08;
 	text-transform: uppercase;
+	text-wrap: balance;
 }
 
 @media (max-width: 560px) {
@@ -942,7 +984,7 @@ h3 {
 
 .selah-carte-affiche {
 	display: grid !important;
-	grid-template-columns: 1.15fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	align-items: stretch;
 	gap: 0 !important;
 	overflow: hidden;
@@ -980,7 +1022,7 @@ h3 {
 	display: grid !important;
 	gap: 22px !important;
 	align-content: center;
-	padding: clamp(32px, 4vw, 64px);
+	padding: clamp(32px, 3.2vw, 56px);
 }
 
 .selah-carte-affiche__texte > * {
@@ -1087,6 +1129,10 @@ h3 {
 
 .selah-questions > * {
 	margin: 0 !important;
+}
+
+.selah-questions > :last-child p {
+	max-width: 42em;
 }
 
 .selah-questions__tete {
@@ -1293,9 +1339,17 @@ h3 {
 	background: url("assets/images/site/texture-kanvo.webp") center / cover no-repeat;
 }
 
-/* Les pages n'ont pas de date utile dans les résultats de recherche. */
+.selah-liste-articles .wp-block-post:nth-child(3n + 2):not(:has(.wp-block-post-featured-image))::before {
+	background-image: url("assets/images/site/atelier.webp");
+}
+
+.selah-liste-articles .wp-block-post:nth-child(3n):not(:has(.wp-block-post-featured-image))::before {
+	background-image: url("assets/images/site/amis.webp");
+}
+
+/* Les pages n'ont pas de date utile : on la cache en gardant l'alignement des titres. */
 .selah-liste-articles .type-page .wp-block-post-date {
-	display: none;
+	visibility: hidden;
 }
 
 /* Champ de recherche sombre. */
@@ -1364,7 +1418,7 @@ h3 {
 }
 
 .selah-pied__titre {
-	margin: 0 0 14px;
+	margin: 0 0 6px; /* les liens ont 8px de marge intérieure en haut. */
 	font-size: 0.8125rem;
 	font-weight: 700;
 	letter-spacing: 0.16em;
@@ -1374,13 +1428,16 @@ h3 {
 
 .selah-liste-liens {
 	display: grid;
-	gap: 10px;
+	gap: 0;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
+/* Cibles tactiles de 40px de haut. */
 .selah-liste-liens a {
+	display: inline-block;
+	padding-block: 8px;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -1414,5 +1471,15 @@ h3 {
 @media (max-width: 600px) {
 	.selah-pied__bas {
 		flex-direction: column;
+	}
+}
+
+@media (max-width: 400px) {
+	.selah-pied__haut {
+		column-gap: 16px !important;
+	}
+
+	.selah-liste-liens a {
+		font-size: 0.9375rem;
 	}
 }

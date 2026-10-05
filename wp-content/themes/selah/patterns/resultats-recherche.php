@@ -20,7 +20,7 @@
 
 <!-- wp:post-title {"isLink":true,"style":{"spacing":{"margin":{"top":"0.25rem"}}},"fontSize":"sous-titre"} /-->
 
-<!-- wp:post-excerpt {"excerptLength":24,"textColor":"gris","fontSize":"secondaire"} /-->
+<!-- wp:post-excerpt {"excerptLength":40,"textColor":"gris","fontSize":"secondaire"} /-->
 <!-- /wp:post-template -->
 
 <!-- wp:query-pagination {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->

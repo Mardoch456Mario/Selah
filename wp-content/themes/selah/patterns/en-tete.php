@@ -17,7 +17,7 @@
 <div class="wp-block-group"><!-- wp:site-title {"level":0} /-->
 
 <!-- wp:navigation {"style":{"spacing":{"blockGap":"clamp(18px, 2.2vw, 32px)"}},"layout":{"type":"flex","justifyContent":"left"}} -->
-<!-- wp:navigation-link {"label":"Comment ça marche","url":"<?php echo esc_url( home_url( '/#comment-ca-marche' ) ); ?>","kind":"custom"} /-->
+<!-- wp:navigation-link {"label":"Comment ça marche","url":"<?php echo esc_url( home_url( '/#comment-ca-marche' ) ); ?>","kind":"custom","className":"selah-masquer-etroit"} /-->
 
 <!-- wp:navigation-link {"label":"Créateurs","url":"<?php echo esc_url( home_url( '/createurs/' ) ); ?>","kind":"custom"} /-->
 

@@ -19,7 +19,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"className":"selah-affiche selah-affiche\u002d\u002dxl"} -->
-<h1 class="wp-block-heading selah-affiche selah-affiche--xl">Votre atelier,<br><em>à l’affiche.</em></h1>
+<h1 class="wp-block-heading selah-affiche selah-affiche--xl">Votre atelier,<br><em>à l’affiche.</em></h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"selah-chapo","style":{"color":{"text":"#e6e6e6"}},"fontSize":"chapo"} -->
@@ -160,8 +160,8 @@
 <p class="selah-ep__num">1</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.22},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>" style="object-position:50% 22%" data-object-fit="cover" data-object-position="50% 22%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.08},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/combinaison-wax.webp' ) ); ?>" style="object-position:50% 8%" data-object-fit="cover" data-object-position="50% 8%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
 <p class="selah-ep__etiquette">Épisode 1</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->

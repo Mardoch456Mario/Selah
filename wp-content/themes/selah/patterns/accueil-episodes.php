@@ -29,8 +29,8 @@
 <p class="selah-ep__num">1</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-kanvo.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.32},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-kanvo.webp' ) ); ?>" style="object-position:50% 32%" data-object-fit="cover" data-object-position="50% 32%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-kanvo.webp' ) ); ?>","overlayColor":"noir","focalPoint":{"x":0.5,"y":0.12},"contentPosition":"top left","className":"selah-ep__vignette selah-progres-1","layout":{"type":"default"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-top-left selah-ep__vignette selah-progres-1"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/site/robe-kanvo.webp' ) ); ?>" style="object-position:50% 12%" data-object-fit="cover" data-object-position="50% 12%"/><span aria-hidden="true" class="wp-block-cover__background has-noir-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"className":"selah-ep__etiquette"} -->
 <p class="selah-ep__etiquette">Épisode 1</p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
