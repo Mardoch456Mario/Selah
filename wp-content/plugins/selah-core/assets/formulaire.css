@@ -101,6 +101,11 @@
 	scroll-margin-top: calc(var(--selah-entete, 0px) + 72px);
 }
 
+/* Un message d'erreur peut tenir sur deux lignes : un peu plus de marge. */
+.selah-formulaire .a-une-erreur :is(input, textarea)[id] {
+	scroll-margin-top: calc(var(--selah-entete, 0px) + 100px);
+}
+
 .selah-formulaire input:focus,
 .selah-formulaire textarea:focus {
 	outline: none;

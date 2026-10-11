@@ -229,14 +229,15 @@ function selah_rangees_accessibles( $contenu, $bloc ) {
 add_filter( 'render_block_core/group', 'selah_rangees_accessibles', 10, 2 );
 
 /**
- * Au clavier, un élément qui reçoit le focus sous l'en-tête collant est ramené
+ * Au clavier (et seulement au clavier : un clic ou un toucher ne fait jamais
+ * défiler), un élément qui reçoit le focus sous l'en-tête collant est ramené
  * juste en dessous. Le navigateur ne fait pas défiler un élément déjà dans la
  * fenêtre, même caché par l'en-tête ; un scroll-padding sur html ferait, lui,
  * sauter la page à la fermeture du menu.
  */
 function selah_focus_hors_entete() {
 	wp_print_inline_script_tag(
-		"document.addEventListener('focusin',function(e){var h=document.querySelector('.selah-entete'),t=e.target;if(!h||h.contains(t)||!t.matches||!t.matches(':focus-visible'))return;var b=h.getBoundingClientRect().bottom,r=t.getBoundingClientRect();if(r.top<b)window.scrollBy(0,r.top-b-16);});"
+		"(function(){var clavier=false;document.addEventListener('keydown',function(){clavier=true;},true);document.addEventListener('pointerdown',function(){clavier=false;},true);document.addEventListener('focusin',function(e){var h=document.querySelector('.selah-entete'),t=e.target;if(!clavier||!h||h.contains(t))return;var b=h.getBoundingClientRect().bottom,r=t.getBoundingClientRect();if(r.top<b)window.scrollBy(0,r.top-b-16);});})();"
 	);
 }
 add_action( 'wp_footer', 'selah_focus_hors_entete' );
