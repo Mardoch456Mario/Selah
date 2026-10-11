@@ -1,0 +1,64 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Selah — site vitrine",
+		"description": "Le thème Selah et l'extension Selah Core, installés depuis GitHub.",
+		"author": "Mardoch456Mario"
+	},
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"login": true,
+	"steps": [
+		{
+			"step": "setSiteLanguage",
+			"language": "fr_FR"
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "git:directory",
+				"url": "https://github.com/Mardoch456Mario/Selah",
+				"ref": "main",
+				"refType": "branch",
+				"path": "wp-content/themes/selah"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "selah"
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "git:directory",
+				"url": "https://github.com/Mardoch456Mario/Selah",
+				"ref": "main",
+				"refType": "branch",
+				"path": "wp-content/plugins/selah-core"
+			},
+			"options": {
+				"activate": true,
+				"targetFolderName": "selah-core"
+			}
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Selah",
+				"timezone_string": "Africa/Porto-Novo",
+				"date_format": "j F Y",
+				"time_format": "H:i"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require_once '/wordpress/wp-load.php'; if ( function_exists( 'selah_installer_pages' ) ) { selah_installer_pages(); }"
+		}
+	]
+}
